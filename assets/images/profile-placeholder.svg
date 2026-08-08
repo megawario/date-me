@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title description">
+  <title id="title">Abstract profile illustration</title>
+  <desc id="description">A warm abstract illustration of a person in profile.</desc>
+  <rect width="800" height="600" fill="#f1ddd4"/>
+  <circle cx="400" cy="274" r="138" fill="#d9927f"/>
+  <path d="M201 600c24-137 102-207 199-207s175 70 199 207H201Z" fill="#71352e"/>
+  <circle cx="350" cy="248" r="13" fill="#25221f"/>
+  <path d="M390 324c35 18 66 13 91-9" fill="none" stroke="#71352e" stroke-linecap="round" stroke-width="12"/>
+  <path d="M259 221c30-100 128-145 219-83 29 20 49 51 58 93-47-32-96-44-148-36-52 8-91 20-129 26Z" fill="#a34d3f"/>
+</svg>
