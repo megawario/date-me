@@ -17,28 +17,36 @@ body {
   background: var(--color-surface);
   color: var(--color-ink);
   font-family: var(--font-body);
-  line-height: 1.6;
+  line-height: 1.5;
+}
+
+button,
+img {
+  display: block;
+}
+
+button {
+  font: inherit;
 }
 
 img {
-  display: block;
   max-width: 100%;
-}
-
-a {
-  color: inherit;
 }
 
 /* 2. Global custom properties */
 
 :root {
   --color-ink: #25221f;
-  --color-muted: #6f6861;
+  --color-muted: #726960;
   --color-surface: #fbf8f3;
   --color-surface-raised: #fffdf9;
   --color-accent: #a34d3f;
   --color-accent-dark: #71352e;
   --color-accent-soft: #f1ddd4;
+  --color-positive: #287a61;
+  --color-positive-soft: #dff2e8;
+  --color-negative: #b74d55;
+  --color-negative-soft: #f8e1e2;
   --color-border: #e5ddd4;
   --color-focus: #174e7a;
   --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -50,55 +58,46 @@ a {
   --space-5: 2rem;
   --space-6: 3rem;
   --space-7: 5rem;
-  --space-8: 7rem;
-  --content-width: 72rem;
-  --content-gutter: clamp(1.25rem, 4vw, 4rem);
-  --radius-card: 1.25rem;
-  --shadow-card: 0 1rem 3rem rgb(56 39 27 / 8%);
+  --content-width: 62rem;
+  --content-gutter: clamp(1.25rem, 4vw, 3rem);
+  --radius-card: 1.35rem;
+  --shadow-card: 0 1rem 3rem rgb(56 39 27 / 12%);
 }
 
 /* 3. Typography */
 
 h1,
 h2,
-h3,
 p {
   margin-top: 0;
 }
 
 h1,
-h2,
-h3 {
+h2 {
   font-family: var(--font-display);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
 h1 {
-  max-width: 11ch;
-  margin-bottom: var(--space-4);
-  font-size: clamp(3.25rem, 8vw, 6.5rem);
-  letter-spacing: -0.055em;
+  margin-bottom: var(--space-3);
+  font-size: clamp(2.9rem, 9vw, 5.5rem);
+  letter-spacing: -0.06em;
 }
 
 h2 {
   margin-bottom: var(--space-3);
-  font-size: clamp(2.25rem, 5vw, 4rem);
-  letter-spacing: -0.04em;
-}
-
-h3 {
-  margin-bottom: var(--space-2);
-  font-size: 1.8rem;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  letter-spacing: -0.045em;
 }
 
 .eyebrow,
-.profile-card__label {
+.swipe-card__kicker {
   margin-bottom: var(--space-2);
   color: var(--color-accent-dark);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
   line-height: 1.3;
   text-transform: uppercase;
 }
@@ -114,7 +113,7 @@ h3 {
   position: absolute;
   top: 0;
   left: 1rem;
-  z-index: 10;
+  z-index: 20;
   padding: 0.75rem 1rem;
   background: var(--color-ink);
   color: white;
@@ -136,8 +135,8 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
-  min-height: 5rem;
+  gap: var(--space-3);
+  min-height: 4.5rem;
 }
 
 .site-brand {
@@ -145,27 +144,222 @@ h3 {
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
   text-decoration: none;
 }
 
-.site-nav {
-  display: flex;
-  align-items: center;
-  gap: clamp(1rem, 3vw, 2rem);
+.header-note {
+  margin: 0;
   color: var(--color-muted);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.site-nav a:not(.button),
-.text-link {
-  text-decoration: none;
+.swipe-section {
+  min-height: calc(100vh - 9rem);
+  padding-block: clamp(2.5rem, 7vw, 5rem);
 }
 
-.site-nav a:not(.button):hover,
-.text-link:hover {
-  color: var(--color-accent);
+.swipe-section__inner {
+  display: grid;
+  grid-template-columns: minmax(13rem, 0.75fr) minmax(18rem, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 8vw, 7rem);
+}
+
+.section-intro {
+  max-width: 22rem;
+}
+
+.section-intro__summary {
+  max-width: 20rem;
+  margin-bottom: 0;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+.swipe-experience {
+  width: min(100%, 27rem);
+  margin-inline: auto;
+}
+
+.swipe-deck {
+  position: relative;
+  width: 100%;
+  height: clamp(27rem, 68vh, 35rem);
+  perspective: 1000px;
+}
+
+.swipe-card,
+.swipe-complete {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid rgb(37 34 31 / 10%);
+  border-radius: var(--radius-card);
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-card);
+}
+
+.swipe-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.5rem, 5vw, 2.25rem);
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  transition: transform 220ms ease, opacity 220ms ease;
+  will-change: transform;
+}
+
+/* Keep the first card visible as a useful static fallback before JavaScript loads. */
+.swipe-card:nth-of-type(1) {
+  z-index: 5;
+}
+
+.swipe-card:nth-of-type(n + 2) {
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(0, 1.6rem, 0) scale(0.92);
+}
+
+.swipe-card.is-dragging {
+  cursor: grabbing;
+  transition: none;
+}
+
+.swipe-card.is-swiped-left,
+.swipe-card.is-swiped-right {
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 320ms ease, opacity 320ms ease;
+}
+
+.swipe-card--feature {
+  background: var(--color-accent-soft);
+}
+
+.swipe-card--statement {
+  background: #e8eee7;
+}
+
+.swipe-card--image {
+  padding: 0;
+  background: var(--color-ink);
+  color: white;
+}
+
+.swipe-card--image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.swipe-card--image::after {
+  position: absolute;
+  inset: 35% 0 0;
+  background: linear-gradient(transparent, rgb(0 0 0 / 75%));
+  content: "";
+}
+
+.swipe-card--final {
+  background: #e7e0f1;
+}
+
+.swipe-card__content,
+.swipe-card__footer,
+.swipe-card__image-caption {
+  position: relative;
+  z-index: 1;
+}
+
+.swipe-card__content {
+  max-width: 22rem;
+  margin-block: auto;
+}
+
+.swipe-card__content h2,
+.swipe-card__image-caption h2 {
+  font-size: clamp(2.25rem, 7vw, 3.7rem);
+}
+
+.swipe-card__content > p:last-child {
+  max-width: 19rem;
+  margin-bottom: 0;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+.swipe-card__footer {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.swipe-card__image-caption {
+  position: absolute;
+  right: clamp(1.5rem, 5vw, 2.25rem);
+  bottom: clamp(1.5rem, 5vw, 2.25rem);
+  left: clamp(1.5rem, 5vw, 2.25rem);
+}
+
+.swipe-card--image .swipe-card__kicker {
+  color: var(--color-accent-soft);
+}
+
+.swipe-card__image-caption h2 {
+  margin-bottom: 0;
+}
+
+.swipe-card__decision {
+  position: absolute;
+  top: 1.5rem;
+  z-index: 2;
+  border: 3px solid currentColor;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.55rem;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.swipe-card__decision--like {
+  right: 1.5rem;
+  color: var(--color-positive);
+  transform: rotate(10deg);
+}
+
+.swipe-card__decision--nope {
+  left: 1.5rem;
+  color: var(--color-negative);
+  transform: rotate(-10deg);
+}
+
+.swipe-complete {
+  display: grid;
+  place-content: center;
+  padding: var(--space-5);
+  background: var(--color-accent-soft);
+  text-align: center;
+}
+
+.swipe-complete h2 {
+  font-size: 2.5rem;
+}
+
+.swipe-complete p:not(.eyebrow) {
+  color: var(--color-muted);
 }
 
 .button {
@@ -184,107 +378,83 @@ h3 {
   background: var(--color-accent-dark);
 }
 
-.button--small {
-  padding: 0.55rem 1rem;
+.button--reset {
+  justify-self: center;
+  cursor: pointer;
+}
+
+.swipe-feedback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 3rem;
+  margin-top: var(--space-3);
+  color: var(--color-muted);
   font-size: 0.85rem;
+  text-align: center;
 }
 
-.intro-section {
-  position: relative;
-  overflow: hidden;
-  background: var(--color-accent-soft);
+.swipe-feedback.is-visible .swipe-feedback__icon {
+  animation: feedback-pop 360ms ease both;
 }
 
-.intro-section::after {
-  position: absolute;
-  right: -8rem;
-  bottom: -12rem;
-  width: 32rem;
-  height: 32rem;
-  border: 1px solid rgb(163 77 63 / 22%);
+.swipe-feedback__icon {
+  display: inline-grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  place-items: center;
   border-radius: 50%;
-  content: "";
+  background: var(--color-positive-soft);
+  color: var(--color-positive);
+  font-weight: 900;
 }
 
-.intro-section__content {
-  position: relative;
-  z-index: 1;
-  padding-block: clamp(5rem, 13vw, 11rem);
+.swipe-feedback.is-nope .swipe-feedback__icon {
+  background: var(--color-negative-soft);
+  color: var(--color-negative);
 }
 
-.intro-section__summary {
-  max-width: 34rem;
-  margin-bottom: var(--space-5);
-  color: var(--color-muted);
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-}
-
-.profiles-section {
-  padding-block: var(--space-8);
-}
-
-.section-heading {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(15rem, 0.8fr);
-  align-items: end;
-  gap: var(--space-6);
-  margin-bottom: var(--space-6);
-}
-
-.section-heading > p {
-  max-width: 25rem;
-  margin-bottom: var(--space-3);
-  color: var(--color-muted);
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.swipe-controls {
+  display: flex;
+  justify-content: center;
   gap: var(--space-4);
+  margin-top: var(--space-2);
 }
 
-.profile-card {
-  overflow: hidden;
+.swipe-control {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
+  border-radius: 50%;
   background: var(--color-surface-raised);
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 0.5rem 1rem rgb(56 39 27 / 8%);
+  cursor: pointer;
+  font-size: 1.8rem;
+  line-height: 1;
+  transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
-.profile-card img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  background: var(--color-accent-soft);
+.swipe-control:hover {
+  box-shadow: 0 0.75rem 1.25rem rgb(56 39 27 / 14%);
+  transform: translateY(-0.15rem);
 }
 
-.profile-card__body {
-  padding: var(--space-4);
+.swipe-control--nope {
+  color: var(--color-negative);
 }
 
-.profile-card__label {
+.swipe-control--like {
+  color: var(--color-positive);
+}
+
+.swipe-hint {
+  margin: var(--space-2) 0 0;
   color: var(--color-muted);
-  font-size: 0.65rem;
-}
-
-.profile-card__body > p:not(.profile-card__label) {
-  min-height: 4.8rem;
-  color: var(--color-muted);
-}
-
-.text-link {
-  color: var(--color-accent-dark);
-  font-weight: 700;
-}
-
-.text-link span {
-  display: inline-block;
-  margin-left: 0.25rem;
-  transition: transform 160ms ease;
-}
-
-.text-link:hover span {
-  transform: translateX(0.2rem);
+  font-size: 0.75rem;
+  text-align: center;
 }
 
 .site-footer {
@@ -296,52 +466,85 @@ h3 {
   font-size: 1.2rem;
 }
 
-.site-footer__note,
 .site-footer__meta {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 /* 6. Utility classes */
+
+[hidden] {
+  display: none !important;
+}
 
 :focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 4px;
 }
 
+@keyframes feedback-pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 /* 7. Responsive rules */
 
 @media (max-width: 48rem) {
-  .section-heading,
-  .card-grid {
-    grid-template-columns: 1fr;
+  .swipe-section__inner {
+    display: block;
   }
 
-  .section-heading {
-    gap: var(--space-3);
+  .section-intro {
+    max-width: 30rem;
+    margin-bottom: var(--space-5);
+    text-align: center;
   }
 
-  .profile-card__body > p:not(.profile-card__label) {
+  .section-intro,
+  .section-intro__summary {
+    margin-inline: auto;
+  }
+
+  .swipe-section {
     min-height: auto;
   }
 }
 
 @media (max-width: 34rem) {
   .site-header__inner {
-    align-items: flex-start;
-    flex-direction: column;
-    padding-block: var(--space-3);
+    min-height: 4rem;
   }
 
-  .site-nav {
-    width: 100%;
-    justify-content: space-between;
+  .swipe-section {
+    padding-top: var(--space-5);
+  }
+
+  .swipe-deck {
+    height: min(73vh, 33rem);
+    min-height: 25rem;
+  }
+
+  .swipe-card__content h2,
+  .swipe-card__image-caption h2 {
+    font-size: clamp(2.1rem, 10vw, 3.2rem);
   }
 
   .site-footer__inner {
     align-items: flex-start;
     flex-direction: column;
-    padding-block: var(--space-4);
+    padding-block: var(--space-3);
   }
 }
 
@@ -355,8 +558,8 @@ h3 {
   *,
   *::before,
   *::after {
-    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
