@@ -3,129 +3,57 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A very serious swipe-based evaluation of one potential date.">
-    <title>Date-me | Swipe responsibly</title>
+    <meta name="description" content="Date-a-Mario: one Mario was apparently not enough.">
+    <title>Date-a-Mario | Choose responsibly</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.js" defer></script>
   </head>
-  <body>
+  <body class="landing-page">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <header class="site-header">
       <div class="container site-header__inner">
-        <a class="site-brand" href="index.html" aria-label="Date-me home">date-me</a>
-        <p class="header-note">Swipe responsibly.</p>
+        <a class="site-brand" href="index.html" aria-label="Date-a-Mario home">Date-a-Mario</a>
+        <p class="header-note">Choose responsibly.</p>
       </div>
     </header>
 
     <main id="main-content">
-      <section class="swipe-section" aria-labelledby="page-title">
-        <div class="container swipe-section__inner">
-          <div class="section-intro">
-            <p class="eyebrow">A very serious evaluation</p>
-            <h1 id="page-title">Would you date me?</h1>
-            <p class="section-intro__summary">Review the evidence. Swipe left or right. Try not to let the power go to your head.</p>
+      <section class="landing-hero" aria-labelledby="landing-title">
+        <div class="container landing-hero__inner">
+          <div class="landing-copy">
+            <p class="eyebrow">A completely unnecessary selection process</p>
+            <h1 id="landing-title">Date-a-<span>Mario</span></h1>
+            <p class="landing-copy__summary">Why meet one Mario when you can review several highly questionable versions first?</p>
+            <a class="button button--primary" href="profiles.html">See profiles <span aria-hidden="true">→</span></a>
           </div>
 
-          <div class="swipe-experience">
-            <div class="swipe-deck" aria-label="Swipeable cards about me">
-              <article class="swipe-card swipe-card--feature" data-card-index="0">
-                <div class="swipe-card__content">
-                  <p class="swipe-card__kicker">Candidate statement</p>
-                  <h2>I am much better in person than on a website.</h2>
-                  <p>Unfortunately, this website was still necessary.</p>
-                </div>
-                <div class="swipe-card__footer">
-                  <span>Evidence 01</span>
-                  <span aria-hidden="true">↗</span>
-                </div>
-                <span class="swipe-card__decision swipe-card__decision--like" aria-hidden="true">+1</span>
-                <span class="swipe-card__decision swipe-card__decision--nope" aria-hidden="true">:(</span>
-              </article>
-
-              <article class="swipe-card swipe-card--statement" data-card-index="1" aria-hidden="true">
-                <div class="swipe-card__content">
-                  <p class="swipe-card__kicker">Known fact</p>
-                  <h2>I will always share my fries.</h2>
-                  <p>Unless you say you do not want any, then I will quietly respect that boundary.</p>
-                </div>
-                <div class="swipe-card__footer">
-                  <span>Evidence 02</span>
-                  <span aria-hidden="true">♡</span>
-                </div>
-                <span class="swipe-card__decision swipe-card__decision--like" aria-hidden="true">+1</span>
-                <span class="swipe-card__decision swipe-card__decision--nope" aria-hidden="true">:(</span>
-              </article>
-
-              <article class="swipe-card swipe-card--image" data-card-index="2" aria-hidden="true">
-                <img src="assets/images/profile-placeholder.svg" alt="Abstract placeholder illustration">
-                <div class="swipe-card__image-caption">
-                  <p class="swipe-card__kicker">Visual evidence</p>
-                  <h2>Has been told he is “quite nice.”</h2>
-                </div>
-                <span class="swipe-card__decision swipe-card__decision--like" aria-hidden="true">+1</span>
-                <span class="swipe-card__decision swipe-card__decision--nope" aria-hidden="true">:(</span>
-              </article>
-
-              <article class="swipe-card swipe-card--statement" data-card-index="3" aria-hidden="true">
-                <div class="swipe-card__content">
-                  <p class="swipe-card__kicker">Compatibility check</p>
-                  <h2>Will make a playlist for the journey.</h2>
-                  <p>The playlist may be too long. The intention will be good.</p>
-                </div>
-                <div class="swipe-card__footer">
-                  <span>Evidence 04</span>
-                  <span aria-hidden="true">♫</span>
-                </div>
-                <span class="swipe-card__decision swipe-card__decision--like" aria-hidden="true">+1</span>
-                <span class="swipe-card__decision swipe-card__decision--nope" aria-hidden="true">:(</span>
-              </article>
-
-              <article class="swipe-card swipe-card--final" data-card-index="4" aria-hidden="true">
-                <div class="swipe-card__content">
-                  <p class="swipe-card__kicker">Final question</p>
-                  <h2>Should we investigate this further over coffee?</h2>
-                  <p>No pressure. This is just an unnecessarily elaborate way to ask.</p>
-                </div>
-                <div class="swipe-card__footer">
-                  <span>Evidence 05</span>
-                  <span aria-hidden="true">☕</span>
-                </div>
-                <span class="swipe-card__decision swipe-card__decision--like" aria-hidden="true">+1</span>
-                <span class="swipe-card__decision swipe-card__decision--nope" aria-hidden="true">:(</span>
-              </article>
-
-              <div class="swipe-complete" hidden>
-                <p class="eyebrow">Review complete</p>
-                <h2>You have seen all the evidence.</h2>
-                <p>Further investigation may require coffee.</p>
-                <button class="button button--reset" type="button">Review again</button>
-              </div>
+          <div class="profile-preview" aria-hidden="true">
+            <div class="profile-preview__card profile-preview__card--back">M</div>
+            <div class="profile-preview__card profile-preview__card--middle">M</div>
+            <div class="profile-preview__card profile-preview__card--front">
+              <span class="profile-preview__number">01</span>
+              <strong>Mario</strong>
+              <small>Probably worth a swipe</small>
             </div>
-
-            <div class="swipe-feedback" aria-live="polite" aria-atomic="true">
-              <span class="swipe-feedback__icon" aria-hidden="true"></span>
-              <span class="swipe-feedback__message">Swipe a card to make your decision.</span>
-            </div>
-
-            <div class="swipe-controls" aria-label="Card controls">
-              <button class="swipe-control swipe-control--nope" type="button" data-swipe-direction="left" aria-label="Swipe left">
-                <span aria-hidden="true">×</span>
-              </button>
-              <button class="swipe-control swipe-control--like" type="button" data-swipe-direction="right" aria-label="Swipe right">
-                <span aria-hidden="true">♥</span>
-              </button>
-            </div>
-            <p class="swipe-hint">Drag the card, or use the buttons.</p>
           </div>
+        </div>
+      </section>
+
+      <section class="landing-tease" aria-labelledby="tease-title">
+        <div class="container landing-tease__inner">
+          <p class="eyebrow">How it works</p>
+          <h2 id="tease-title">One link. Several Marios. No sensible explanation.</h2>
+          <p>Browse each profile, swipe left or right, and discover where this suspiciously elaborate journey leads.</p>
+          <a class="text-link" href="profiles.html">Start reviewing profiles <span aria-hidden="true">↗</span></a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container site-footer__inner">
-        <p class="site-brand site-brand--footer">date-me</p>
-        <p class="site-footer__meta">© <span id="current-year">2026</span> — a joke, probably</p>
+        <p class="site-brand site-brand--footer">Date-a-Mario</p>
+        <p class="site-footer__meta">© <span data-current-year>2026</span> — a joke, probably</p>
       </div>
     </footer>
   </body>
