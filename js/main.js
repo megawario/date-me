@@ -16,6 +16,8 @@ const deck = document.querySelector('[data-profile-deck]');
 
 if (deck) {
   const profiles = [...deck.querySelectorAll('[data-profile-index]')];
+  const decisionLayer = deck.querySelector('[data-swipe-decision]');
+  const decisionLabel = decisionLayer?.querySelector('[data-swipe-decision-label]');
   const feedbackRegion = document.querySelector('[data-swipe-feedback]');
   const feedback = feedbackRegion?.querySelector('.swipe-feedback__message');
   const completePanel = document.querySelector('[data-profile-complete]');
@@ -34,34 +36,41 @@ if (deck) {
     return profiles[activeIndex];
   }
 
-  function clearDecisionBadges(profile) {
-    profile.querySelectorAll('.profile-sequence__decision').forEach((badge) => {
-      badge.style.opacity = '0';
-    });
+  function clearDecisionLayer() {
+    if (!decisionLayer) return;
+    decisionLayer.classList.remove('is-like', 'is-nope');
+    decisionLayer.style.opacity = '0';
+    if (decisionLabel) decisionLabel.textContent = '';
+  }
+
+  function showDecisionLayer(direction, progress = 1) {
+    if (!decisionLayer || !decisionLabel) return;
+    const isLike = direction === 'right';
+    decisionLayer.classList.toggle('is-like', isLike);
+    decisionLayer.classList.toggle('is-nope', !isLike);
+    decisionLayer.style.opacity = String(Math.max(0, Math.min(progress, 1)));
+    decisionLabel.textContent = isLike ? 'Yes' : 'Next';
   }
 
   function updateStack() {
     profiles.forEach((profile, index) => {
       const distance = index - activeIndex;
       const isCurrent = distance === 0;
-      const isUpcoming = distance > 0 && distance < 3;
 
       profile.setAttribute('aria-hidden', String(!isCurrent));
-      profile.style.zIndex = String(profiles.length - Math.max(distance, 0));
+      profile.style.zIndex = isCurrent ? '2' : '0';
       profile.style.pointerEvents = isCurrent ? 'auto' : 'none';
 
       if (isCurrent) {
         profile.style.opacity = '1';
         profile.style.transform = 'translate3d(0, 0, 0) rotate(0deg)';
-      } else if (isUpcoming) {
-        profile.style.opacity = '1';
-        profile.style.transform = `translate3d(0, ${distance * 0.7}rem, 0) scale(${1 - distance * 0.035})`;
       } else {
         profile.style.opacity = '0';
-        profile.style.transform = 'translate3d(0, 1.4rem, 0) scale(0.93)';
+        profile.style.transform = 'translate3d(0, 0, 0)';
       }
     });
 
+    clearDecisionLayer();
     if (activeProfile) activeProfile.textContent = String(activeIndex + 1);
   }
 
@@ -88,6 +97,7 @@ if (deck) {
     isAnimating = true;
     const sign = direction === 'right' ? 1 : -1;
 
+    showDecisionLayer(direction);
     profile.classList.add(`is-swiped-${direction === 'right' ? 'right' : 'left'}`);
     profile.style.transform = `translate3d(${sign * 125}vw, 0, 0) rotate(${sign * 24}deg)`;
     showFeedback(direction);
@@ -108,7 +118,7 @@ if (deck) {
   function resetProfilePosition(profile) {
     profile.classList.remove('is-dragging');
     profile.style.transform = 'translate3d(0, 0, 0) rotate(0deg)';
-    clearDecisionBadges(profile);
+    clearDecisionLayer();
   }
 
   function handlePointerDown(event) {
@@ -131,13 +141,14 @@ if (deck) {
     const { profile, startX } = pointerState;
     const distance = event.clientX - startX;
     const progress = Math.min(Math.abs(distance) / 140, 1);
-    const likeBadge = profile.querySelector('.profile-sequence__decision--like');
-    const nopeBadge = profile.querySelector('.profile-sequence__decision--nope');
 
     pointerState.currentX = event.clientX;
     profile.style.transform = `translate3d(${distance}px, ${Math.abs(distance) * 0.025}px, 0) rotate(${distance * 0.05}deg)`;
-    likeBadge.style.opacity = distance > 0 ? String(progress) : '0';
-    nopeBadge.style.opacity = distance < 0 ? String(progress) : '0';
+    if (Math.abs(distance) > 4) {
+      showDecisionLayer(distance > 0 ? 'right' : 'left', progress);
+    } else {
+      clearDecisionLayer();
+    }
   }
 
   function handlePointerUp(event) {
@@ -179,7 +190,6 @@ if (deck) {
 
     profiles.forEach((profile) => {
       profile.classList.remove('is-swiped-left', 'is-swiped-right', 'is-dragging');
-      clearDecisionBadges(profile);
       const scroller = profile.querySelector('[data-profile-cards]');
       if (scroller) scroller.scrollTop = 0;
     });
@@ -188,6 +198,7 @@ if (deck) {
     if (feedbackRegion) feedbackRegion.hidden = false;
     if (completePanel) completePanel.hidden = true;
     if (feedback) feedback.textContent = 'Swipe left or right when you are ready.';
+    clearDecisionLayer();
     updateStack();
     deck.focus({ preventScroll: true });
     window.scrollTo({ top: 0, behavior: scrollBehavior });

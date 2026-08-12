@@ -14,7 +14,6 @@
     <header class="profiles-header">
       <div class="container profiles-header__inner">
         <p class="site-brand">Date-a-Mario</p>
-        <p class="profile-progress" aria-live="polite">Profile <span data-active-profile>1</span> of <span data-profile-total>3</span></p>
       </div>
     </header>
 
@@ -22,12 +21,15 @@
       <h1 class="visually-hidden">Date-a-Mario profiles</h1>
       <div class="profile-experience">
         <div class="profile-deck" data-profile-deck tabindex="0" aria-label="Mario profiles. Scroll down for more cards, or swipe left or right to choose.">
+          <div class="swipe-decision-layer" data-swipe-decision aria-hidden="true">
+            <span data-swipe-decision-label></span>
+          </div>
+
           <article class="profile-sequence profile-sequence--gonzalez" data-profile-index="0" aria-label="Mario Gonzalez profile">
             <div class="profile-sequence__scroll" data-profile-cards tabindex="-1" aria-label="Mario Gonzalez cards">
               <section class="profile-card profile-card--profile" data-card-type="profile">
                 <div class="profile-card__visual" role="img" aria-label="Placeholder portrait for Mario Gonzalez">
                   <span class="profile-card__monogram" aria-hidden="true">M</span>
-                  <span class="profile-card__edition">Edition 01</span>
                 </div>
                 <div class="profile-card__body">
                   <p class="profile-card__type">The creepy-cool one</p>
@@ -47,9 +49,8 @@
                   <p class="profile-card__type">The overall vibe</p>
                   <h2 id="gonzalez-vibe">A little unsettling. Surprisingly charming.</h2>
                   <p>He may appear in your dreams, but at least he brings good conversation.</p>
-                  <p class="profile-card__more">Scroll for more <span aria-hidden="true">↓</span></p>
                 </div>
-                <p class="profile-card__number" aria-hidden="true">02</p>
+                <p class="profile-card__more">Scroll for more <span aria-hidden="true">↓</span></p>
               </section>
 
               <section class="profile-card profile-card--image-text" data-card-type="image-text" aria-labelledby="gonzalez-photo">
@@ -59,10 +60,9 @@
                   <h2 id="gonzalez-photo">Insert suspiciously good photo here.</h2>
                   <p>Preferably with dramatic lighting.</p>
                 </div>
+                <p class="profile-card__more">Left or right?</p>
               </section>
             </div>
-            <span class="profile-sequence__decision profile-sequence__decision--like" aria-hidden="true">Yes</span>
-            <span class="profile-sequence__decision profile-sequence__decision--nope" aria-hidden="true">Next</span>
           </article>
 
           <article class="profile-sequence profile-sequence--filme" data-profile-index="1" aria-label="Filme Mario profile">
@@ -70,7 +70,6 @@
               <section class="profile-card profile-card--profile" data-card-type="profile">
                 <div class="profile-card__visual" role="img" aria-label="Placeholder portrait for Filme Mario">
                   <span class="profile-card__monogram" aria-hidden="true">M</span>
-                  <span class="profile-card__edition">Edition 02</span>
                 </div>
                 <div class="profile-card__body">
                   <p class="profile-card__type">The cinephile</p>
@@ -90,9 +89,8 @@
                   <p class="profile-card__type">Important film information</p>
                   <h2 id="filme-opinion">The director's cut is usually worth it.</h2>
                   <p>He will explain why, but only after asking whether you have seen the movie first.</p>
-                  <p class="profile-card__more">Scroll for more <span aria-hidden="true">↓</span></p>
                 </div>
-                <p class="profile-card__number" aria-hidden="true">02</p>
+                <p class="profile-card__more">Scroll for more <span aria-hidden="true">↓</span></p>
               </section>
 
               <section class="profile-card profile-card--image-text" data-card-type="image-text" aria-labelledby="filme-photo">
@@ -101,24 +99,22 @@
                   <p class="profile-card__type">Photo slot</p>
                   <h2 id="filme-photo">A still from a life with excellent cinematography.</h2>
                   <p>Choose something with a little drama.</p>
-                  <p class="profile-card__more">Scroll for more <span aria-hidden="true">↓</span></p>
                 </div>
+                <p class="profile-card__more">Scroll for more <span aria-hidden="true">↓</span></p>
               </section>
 
               <section class="profile-card profile-card--image" data-card-type="image" aria-label="Filme Mario image card">
                 <img src="assets/images/profile-placeholder.svg" alt="Placeholder image for Filme Mario" loading="lazy" decoding="async">
+                <p class="profile-card__more">Left or right?</p>
               </section>
             </div>
-            <span class="profile-sequence__decision profile-sequence__decision--like" aria-hidden="true">Yes</span>
-            <span class="profile-sequence__decision profile-sequence__decision--nope" aria-hidden="true">Next</span>
           </article>
 
           <article class="profile-sequence profile-sequence--fun" data-profile-index="2" aria-label="Fun Mario profile">
             <div class="profile-sequence__scroll" data-profile-cards tabindex="-1" aria-label="Fun Mario cards">
               <section class="profile-card profile-card--profile" data-card-type="profile">
-                <div class="profile-card__visual" role="img" aria-label="Placeholder portrait for Fun Mario">
-                  <span class="profile-card__monogram" aria-hidden="true">M</span>
-                  <span class="profile-card__edition">Edition 03</span>
+                <div class="profile-card__visual profile-card__visual--photo">
+                  <img src="assets/images/fun-mario.jpg" alt="Fun Mario enjoying a concert with the crowd" loading="lazy" decoding="async">
                 </div>
                 <div class="profile-card__body">
                   <p class="profile-card__type">The fun one</p>
@@ -134,13 +130,13 @@
               </section>
 
               <section class="profile-card profile-card--image-text" data-card-type="image-text" aria-labelledby="fun-photo">
-                <img src="assets/images/profile-placeholder.svg" alt="Placeholder portrait for Fun Mario" loading="lazy" decoding="async">
+                <img src="assets/images/fun-mario.jpg" alt="Fun Mario enjoying a concert with the crowd" loading="lazy" decoding="async">
                 <div class="profile-card__image-copy">
                   <p class="profile-card__type">Photo slot</p>
                   <h2 id="fun-photo">Evidence of a good time.</h2>
                   <p>Use a photo where the fun is obvious before the caption explains it.</p>
-                  <p class="profile-card__more">Scroll for more <span aria-hidden="true">↓</span></p>
                 </div>
+                <p class="profile-card__more">Scroll for more <span aria-hidden="true">↓</span></p>
               </section>
 
               <section class="profile-card profile-card--text" data-card-type="text" aria-labelledby="fun-warning">
@@ -149,11 +145,9 @@
                   <h2 id="fun-warning">Side effects may include spontaneous plans.</h2>
                   <p>May also cause laughing at jokes that should not have worked.</p>
                 </div>
-                <p class="profile-card__number" aria-hidden="true">03</p>
+                <p class="profile-card__more">Left or right?</p>
               </section>
             </div>
-            <span class="profile-sequence__decision profile-sequence__decision--like" aria-hidden="true">Yes</span>
-            <span class="profile-sequence__decision profile-sequence__decision--nope" aria-hidden="true">Next</span>
           </article>
         </div>
 
