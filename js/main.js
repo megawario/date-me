@@ -132,7 +132,7 @@ function renderImageCard(card, profileName, isFinalCard) {
   return section;
 }
 
-function renderSpotifyCard(card, isFinalCard) {
+function renderSpotifyCard(card, headingId, isFinalCard) {
   const embedUrl = new URL(card.embedUrl);
   const isSupportedEmbed = embedUrl.origin === 'https://open.spotify.com'
     && /^\/embed\/(track|album|artist)\/[^/]+\/?$/.test(embedUrl.pathname);
@@ -144,7 +144,7 @@ function renderSpotifyCard(card, isFinalCard) {
   const section = document.createElement('section');
   section.className = 'profile-card profile-card--spotify';
   section.dataset.cardType = 'spotify';
-  section.setAttribute('aria-label', card.title);
+  section.setAttribute('aria-labelledby', headingId);
 
   const player = document.createElement('div');
   player.className = 'spotify-card__player';
@@ -164,7 +164,17 @@ function renderSpotifyCard(card, isFinalCard) {
   iframe.style.setProperty('--spotify-embed-height', `${embedHeight}px`);
 
   player.append(iframe);
-  section.append(player, createCardPrompt(isFinalCard));
+
+  const copy = document.createElement('div');
+  copy.className = 'spotify-card__copy';
+  if (card.callsign) copy.append(createTextElement('p', 'profile-card__type', card.callsign));
+
+  const heading = createTextElement('h2', '', card.heading || card.title);
+  heading.id = headingId;
+  copy.append(heading);
+  if (card.body) copy.append(createTextElement('p', '', card.body));
+
+  section.append(player, copy, createCardPrompt(isFinalCard));
   return section;
 }
 
@@ -176,7 +186,7 @@ function renderCard(card, profile, cardIndex) {
   if (card.type === 'text') return renderTextCard(card, headingId, isFinalCard);
   if (card.type === 'image-text') return renderImageTextCard(card, headingId, isFinalCard);
   if (card.type === 'image') return renderImageCard(card, profile.name, isFinalCard);
-  if (card.type === 'spotify') return renderSpotifyCard(card, isFinalCard);
+  if (card.type === 'spotify') return renderSpotifyCard(card, headingId, isFinalCard);
   throw new Error(`Unsupported card type: ${card.type}`);
 }
 

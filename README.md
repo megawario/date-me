@@ -30,7 +30,7 @@ Supported card types and fields are:
 - `text` — `callsign`, `heading`, and `body`.
 - `image-text` — `image`, `imageAlt`, `imagePosition` (optional), `callsign`, `heading`, and `body`.
 - `image` — `image`, `imageAlt`, and `imagePosition` (optional).
-- `spotify` — `embedUrl`, `title`, and `height` (optional, clamped between 300 and 480 pixels). The URL must be an `https://open.spotify.com/embed/` track, album, or artist URL.
+- `spotify` — `embedUrl`, accessible iframe `title`, `callsign` (optional), `heading` (optional), `body` (optional), and `height` (optional, clamped between 300 and 480 pixels). The URL must be an `https://open.spotify.com/embed/` track, album, or artist URL. Configured copy appears over the player without blocking its controls.
 
 Image paths are relative to the site root. A profile card without an `image` uses the decorative monogram treatment. The renderer adds the visible “Scroll for more ↓” cue to every non-final card and “Left or right?” to the last card in each profile.
 

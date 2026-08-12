@@ -22,7 +22,7 @@ Date-a-Mario is a framework-free personal joke site for GitHub Pages. A visitor 
 
 ## Assets and placeholders
 
-Profile artwork and copy are maintained in `data/profiles.json`. A profile entry contains its identity, accent color, and ordered cards. Profile cards configure identity copy and tags; text cards configure a callsign, heading, and body; image cards configure an image and alternative text; image-with-text cards combine those image fields with a callsign, heading, and body. Images may also set an optional focal position. Spotify cards configure an accessible title, a track, album, or artist embed URL, and an optional height.
+Profile artwork and copy are maintained in `data/profiles.json`. A profile entry contains its identity, accent color, and ordered cards. Profile cards configure identity copy and tags; text cards configure a callsign, heading, and body; image cards configure an image and alternative text; image-with-text cards combine those image fields with a callsign, heading, and body. Images may also set an optional focal position. Spotify cards configure an accessible title, a track, album, or artist embed URL, an optional height, and optional callsign, heading, and body copy displayed over the player without blocking its controls.
 
 The current profile facets are Gonzalez (creepy-cool), Filme (cinephile), and Fun (good times). Fun Mario uses `assets/images/fun-mario.jpg` and a configured Spotify album embed; the other image cards still use the local placeholder image until final photos are selected. The completion screen links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
 

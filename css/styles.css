@@ -600,6 +600,7 @@ h2 {
 }
 
 .profile-card--spotify {
+  position: relative;
   display: grid;
   min-height: 30rem;
   padding: 1rem 1rem 4rem;
@@ -618,6 +619,35 @@ h2 {
   max-height: calc(100svh - 11rem);
   border: 0;
   border-radius: 0.75rem;
+}
+
+.spotify-card__copy {
+  position: absolute;
+  top: 1.75rem;
+  right: 1.75rem;
+  left: 1.75rem;
+  z-index: 1;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, rgb(0 0 0 / 88%), rgb(0 0 0 / 58%));
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 30%);
+  color: white;
+  pointer-events: none;
+}
+
+.spotify-card__copy h2 {
+  margin-bottom: 0.4rem;
+  font-size: clamp(1.8rem, 8vw, 2.6rem);
+}
+
+.spotify-card__copy p {
+  margin-bottom: 0;
+  color: rgb(255 255 255 / 82%);
+}
+
+.spotify-card__copy .profile-card__type {
+  margin-bottom: 0.3rem;
+  color: #1ed760;
 }
 
 .swipe-decision-layer {
