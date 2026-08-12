@@ -18,7 +18,7 @@ No build step or package installation is required. Serve the repository with any
 - Root HTML files contain the page structure and application UI.
 - `css/styles.css` contains presentation and responsive rules.
 - `data/profiles.json` contains all profile and card content in display order.
-- `js/main.js` renders the configured cards and runs the profile deck; decisions are temporary and never stored or transmitted.
+- `js/main.js` renders the configured cards and runs the profile deck; decisions are temporary and never stored or transmitted. “Review again” reloads the profiles page for a fresh visit.
 - `assets/images/` contains local profile imagery.
 - `docs/plan.md` documents the current static-site scope.
 

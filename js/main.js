@@ -385,27 +385,6 @@ function initializeDeck() {
     scroller.scrollBy({ top: direction * scroller.clientHeight, behavior: scrollBehavior });
   }
 
-  function resetDeck() {
-    activeIndex = 0;
-    pointerState = null;
-    isAnimating = false;
-
-    profiles.forEach((profile) => {
-      profile.classList.remove('is-swiped-left', 'is-swiped-right', 'is-dragging');
-      const scroller = profile.querySelector('[data-profile-cards]');
-      if (scroller) scroller.scrollTop = 0;
-    });
-
-    deck.hidden = false;
-    if (feedbackRegion) feedbackRegion.hidden = false;
-    if (completePanel) completePanel.hidden = true;
-    if (feedback) feedback.textContent = 'Swipe left or right when you are ready.';
-    clearDecisionLayer();
-    updateStack();
-    deck.focus({ preventScroll: true });
-    window.scrollTo({ top: 0, behavior: scrollBehavior });
-  }
-
   deck.addEventListener('pointerdown', handlePointerDown);
   deck.addEventListener('pointermove', handlePointerMove);
   deck.addEventListener('pointerup', handlePointerUp);
@@ -427,7 +406,7 @@ function initializeDeck() {
     }
   });
 
-  resetButton?.addEventListener('click', resetDeck);
+  resetButton?.addEventListener('click', () => window.location.reload());
   updateStack();
 }
 
