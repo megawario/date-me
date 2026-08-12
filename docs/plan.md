@@ -2,7 +2,7 @@
 
 ## Summary
 
-Date-a-Mario is a framework-free personal joke site for GitHub Pages. A visitor starts on a scrollable landing page, follows the “See profiles” link, reviews several fictional Mario profiles, and reaches an Instagram QR screen after making a temporary left-or-right decision on every card.
+Date-a-Mario is a framework-free personal joke site for GitHub Pages. A visitor starts on a scrollable landing page, follows the “See profiles” link, reviews three facets of Mario—Mario Gonzalez, Filme Mario, and Fun Mario—and reaches an Instagram QR screen after making a temporary left-or-right decision on every profile.
 
 ## Page structure
 
@@ -21,7 +21,7 @@ Date-a-Mario is a framework-free personal joke site for GitHub Pages. A visitor 
 
 ## Assets and placeholders
 
-Profile artwork and copy are placeholders for later refinement. Image and image-with-text cards may reference remote images directly; the current templates load their example from Pexels without adding the file to the repository. The completion screen uses `assets/images/instagram-placeholder-qr.svg`, which encodes the placeholder URL `https://www.instagram.com/your_username/`. When the real Instagram profile is known, update both the QR asset and its link in `profiles.html`.
+Profile artwork and copy are placeholders for later refinement. The current profile facets are Gonzalez (creepy-cool), Filme (cinephile), and Fun (good times). Image and image-with-text cards use the local placeholder image until final photos are selected. The completion screen uses `assets/images/instagram-placeholder-qr.svg`, which encodes the placeholder URL `https://www.instagram.com/your_username/`. When the real Instagram profile is known, update both the QR asset and its link in `profiles.html`.
 
 ## Constraints
 

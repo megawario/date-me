@@ -444,10 +444,9 @@ h2 {
   text-transform: uppercase;
 }
 
-.profile-sequence--adventure { --profile-color: #b9d1c6; }
-.profile-sequence--kitchen { --profile-color: #efc4ae; }
-.profile-sequence--culture { --profile-color: #d6cae4; }
-.profile-sequence--sunday { --profile-color: #e9dcae; }
+.profile-sequence--gonzalez { --profile-color: #b9d1c6; }
+.profile-sequence--filme { --profile-color: #d6cae4; }
+.profile-sequence--fun { --profile-color: #efc4ae; }
 
 .profile-card__body {
   padding: 1.35rem;
