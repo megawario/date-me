@@ -1,9 +1,9 @@
 /**
  * Date-a-Mario progressive enhancement.
  *
- * Each profile owns a variable-length, vertically scrollable card sequence.
- * JavaScript adds horizontal swiping between profiles; decisions stay in
- * memory and are never stored or sent.
+ * Profile content is loaded from data/profiles.json and rendered as a
+ * variable-length card sequence. Decisions stay in memory and are never
+ * stored or sent.
  */
 
 document.documentElement.classList.add('js');
@@ -14,7 +14,162 @@ document.querySelectorAll('[data-current-year]').forEach((year) => {
 
 const deck = document.querySelector('[data-profile-deck]');
 
-if (deck) {
+function createTextElement(tagName, className, text) {
+  const element = document.createElement(tagName);
+  if (className) element.className = className;
+  element.textContent = text;
+  return element;
+}
+
+function createImage(card) {
+  const image = document.createElement('img');
+  image.src = card.image;
+  image.alt = card.imageAlt;
+  image.loading = 'lazy';
+  image.decoding = 'async';
+  if (card.imagePosition) image.style.objectPosition = card.imagePosition;
+  return image;
+}
+
+function createCardPrompt(isFinalCard) {
+  const prompt = createTextElement(
+    'p',
+    'profile-card__more',
+    isFinalCard ? 'Left or right?' : 'Scroll for more ',
+  );
+
+  if (!isFinalCard) {
+    const arrow = createTextElement('span', '', '↓');
+    arrow.setAttribute('aria-hidden', 'true');
+    prompt.append(arrow);
+  }
+
+  return prompt;
+}
+
+function renderProfileCard(card, isFinalCard) {
+  const section = document.createElement('section');
+  section.className = 'profile-card profile-card--profile';
+  section.dataset.cardType = 'profile';
+
+  const visual = document.createElement('div');
+  visual.className = 'profile-card__visual';
+
+  if (card.image) {
+    visual.classList.add('profile-card__visual--photo');
+    visual.append(createImage(card));
+  } else {
+    visual.setAttribute('role', 'img');
+    visual.setAttribute('aria-label', card.imageAlt);
+    const monogram = createTextElement('span', 'profile-card__monogram', card.name.charAt(0));
+    monogram.setAttribute('aria-hidden', 'true');
+    visual.append(monogram);
+  }
+
+  const body = document.createElement('div');
+  body.className = 'profile-card__body';
+  body.append(createTextElement('p', 'profile-card__type', card.callsign));
+
+  const heading = createTextElement('h2', '', `${card.name} `);
+  heading.append(createTextElement('span', '', card.age));
+  body.append(heading);
+  body.append(createTextElement('p', '', card.catchphrase));
+
+  const tags = document.createElement('ul');
+  tags.className = 'profile-tags';
+  tags.setAttribute('aria-label', 'Interests');
+  card.tags.forEach((tag) => tags.append(createTextElement('li', '', tag)));
+  body.append(tags, createCardPrompt(isFinalCard));
+  section.append(visual, body);
+
+  return section;
+}
+
+function renderTextCard(card, headingId, isFinalCard) {
+  const section = document.createElement('section');
+  section.className = 'profile-card profile-card--text';
+  section.dataset.cardType = 'text';
+  section.setAttribute('aria-labelledby', headingId);
+
+  const content = document.createElement('div');
+  content.className = 'text-card__content';
+  content.append(createTextElement('p', 'profile-card__type', card.callsign));
+
+  const heading = createTextElement('h2', '', card.heading);
+  heading.id = headingId;
+  content.append(heading, createTextElement('p', '', card.body));
+  section.append(content, createCardPrompt(isFinalCard));
+
+  return section;
+}
+
+function renderImageTextCard(card, headingId, isFinalCard) {
+  const section = document.createElement('section');
+  section.className = 'profile-card profile-card--image-text';
+  section.dataset.cardType = 'image-text';
+  section.setAttribute('aria-labelledby', headingId);
+  section.append(createImage(card));
+
+  const copy = document.createElement('div');
+  copy.className = 'profile-card__image-copy';
+  copy.append(createTextElement('p', 'profile-card__type', card.callsign));
+
+  const heading = createTextElement('h2', '', card.heading);
+  heading.id = headingId;
+  copy.append(heading, createTextElement('p', '', card.body));
+  section.append(copy, createCardPrompt(isFinalCard));
+
+  return section;
+}
+
+function renderImageCard(card, profileName, isFinalCard) {
+  const section = document.createElement('section');
+  section.className = 'profile-card profile-card--image';
+  section.dataset.cardType = 'image';
+  section.setAttribute('aria-label', `${profileName} image card`);
+  section.append(createImage(card), createCardPrompt(isFinalCard));
+  return section;
+}
+
+function renderCard(card, profile, cardIndex) {
+  const headingId = `${profile.id}-card-${cardIndex}-heading`;
+  const isFinalCard = cardIndex === profile.cards.length - 1;
+
+  if (card.type === 'profile') return renderProfileCard(card, isFinalCard);
+  if (card.type === 'text') return renderTextCard(card, headingId, isFinalCard);
+  if (card.type === 'image-text') return renderImageTextCard(card, headingId, isFinalCard);
+  return renderImageCard(card, profile.name, isFinalCard);
+}
+
+function renderProfiles(configuration) {
+  const status = deck.querySelector('[data-profile-status]');
+  const fragment = document.createDocumentFragment();
+
+  configuration.profiles.forEach((profile, profileIndex) => {
+    const sequence = document.createElement('article');
+    sequence.className = 'profile-sequence';
+    sequence.dataset.profileIndex = String(profileIndex);
+    sequence.setAttribute('aria-label', `${profile.name} profile`);
+    sequence.style.setProperty('--profile-color', profile.accentColor);
+
+    const cards = document.createElement('div');
+    cards.className = 'profile-sequence__scroll';
+    cards.dataset.profileCards = '';
+    cards.tabIndex = -1;
+    cards.setAttribute('aria-label', `${profile.name} cards`);
+    profile.cards.forEach((card, cardIndex) => {
+      cards.append(renderCard(card, profile, cardIndex));
+    });
+
+    sequence.append(cards);
+    fragment.append(sequence);
+  });
+
+  deck.insertBefore(fragment, status);
+  status.remove();
+}
+
+function initializeDeck() {
   const profiles = [...deck.querySelectorAll('[data-profile-index]')];
   const decisionLayer = deck.querySelector('[data-swipe-decision]');
   const decisionLabel = decisionLayer?.querySelector('[data-swipe-decision-label]');
@@ -54,9 +209,7 @@ if (deck) {
 
   function updateStack() {
     profiles.forEach((profile, index) => {
-      const distance = index - activeIndex;
-      const isCurrent = distance === 0;
-
+      const isCurrent = index === activeIndex;
       profile.setAttribute('aria-hidden', String(!isCurrent));
       profile.style.zIndex = isCurrent ? '2' : '0';
       profile.style.pointerEvents = isCurrent ? 'auto' : 'none';
@@ -227,4 +380,17 @@ if (deck) {
 
   resetButton?.addEventListener('click', resetDeck);
   updateStack();
+}
+
+if (deck) {
+  fetch('data/profiles.json')
+    .then((response) => response.json())
+    .then((configuration) => {
+      renderProfiles(configuration);
+      initializeDeck();
+    })
+    .catch(() => {
+      const status = deck.querySelector('[data-profile-status]');
+      if (status) status.textContent = 'The profiles could not be loaded.';
+    });
 }
