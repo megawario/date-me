@@ -1,60 +1,28 @@
-# Date-me Static Site Foundation
+# Date-a-Mario Static Site
 
 ## Summary
 
-Create a framework-free personal landing page for GitHub Pages using semantic HTML, organized CSS, and minimal JavaScript scaffolding.
+Date-a-Mario is a framework-free personal joke site for GitHub Pages. A visitor starts on a scrollable landing page, follows the “See profiles” link, reviews several fictional Mario profiles, and reaches an Instagram QR screen after making a temporary left-or-right decision on every card.
 
-The page will be linked from a physical card handed to female friends as a playful joke. It is not a dating app, matchmaking service, or product. This phase focuses on technical structure, maintainability, and a mobile-friendly baseline. Final visual design and wording remain open for later iteration.
+## Page structure
 
-## Project structure
+- `index.html` is the root landing page and keeps the GitHub Pages entry point unchanged.
+- `profiles.html` contains the focused profile deck and completion screen. It intentionally has no in-page back link.
+- Each profile owns a variable-length sequence inside `[data-profile-cards]`. Sequences can contain profile, text, image, and image-with-text cards.
+- Profile content is semantic HTML and remains readable without JavaScript. JavaScript turns the profile list into a one-profile-at-a-time deck while CSS makes each profile's cards vertically scrollable.
+- Every non-final card in a multi-card profile should include the visible “Scroll for more ↓” cue. It makes the additional content discoverable on mobile, where the inner scrollbar may be hidden. The final card should omit the cue.
 
-```text
-date-me/
-├── index.html
-├── css/styles.css
-├── js/main.js
-├── assets/images/
-├── assets/icons/
-├── docs/plan.md
-├── AGENTS.md
-├── .gitignore
-└── README.md
-```
+## Presentation and behavior
 
-## Technical approach
+- `css/styles.css` uses mobile-first rules, fluid sizing, scroll snapping, visible focus states, and reduced-motion support.
+- `js/main.js` activates the deck only when `[data-profile-deck]` is present. It adds pointer dragging, arrow-key decisions, keyboard card scrolling, progress, completion, and reset behavior.
+- Swipe decisions exist only in memory for the current visit. Nothing is persisted or transmitted.
+- Internal pages and assets use relative paths so the site works from the repository root on GitHub Pages.
 
-- Keep `index.html` at the repository root for GitHub Pages compatibility.
-- Use semantic HTML elements and separate content, presentation, and behavior.
-- Store styles in `css/styles.css` and JavaScript in `js/main.js`.
-- Load JavaScript with `defer`.
-- Use CSS custom properties and relative internal paths.
-- Avoid frameworks, bundlers, package dependencies, and backend services.
-- Keep the site deployable as plain static files.
+## Assets and placeholders
 
-## Initial page structure
+Profile artwork and copy are placeholders for later refinement. Image and image-with-text cards may reference remote images directly; the current templates load their example from Pexels without adding the file to the repository. The completion screen uses `assets/images/instagram-placeholder-qr.svg`, which encodes the placeholder URL `https://www.instagram.com/your_username/`. When the real Instagram profile is known, update both the QR asset and its link in `profiles.html`.
 
-The first page contains a site header with branding and navigation placeholders, a semantic main area with a neutral introduction, a reusable card-based placeholder section, and a footer with basic metadata. Content and assets are placeholders only and may be replaced as the joke and visual direction develop.
+## Constraints
 
-## Initial JavaScript scope
-
-JavaScript is limited to a progressive-enhancement scaffold. It contains no authentication, dating or matching logic, API calls, data loading, forms, persistence, user accounts, or backend integration. The page remains usable without JavaScript.
-
-## Responsive and mobile-friendly behavior
-
-The site must remain readable and usable on a phone, since the primary entry point is a link from a physical card. Layouts collapse at narrow widths, spacing and type use fluid values where useful, links have comfortable targets, and content does not require JavaScript or horizontal scrolling.
-
-## CSS organization
-
-The stylesheet is organized into CSS reset and base styles, global custom properties, typography, layout primitives, component styles, utility classes, responsive rules, and accessibility preferences. Class names describe purpose or component behavior.
-
-## Accessibility principles
-
-The implementation uses semantic structure, a logical heading hierarchy, keyboard-friendly links, visible focus states, descriptive image alt text, sufficient contrast, reduced-motion support, and core content that does not depend on JavaScript.
-
-## Explicit exclusions and future scope
-
-This phase excludes QA processes, test plans, automated tests, browser validation workflows, deployment automation, dating features, matchmaking, authentication, database integration, API integration, and final branding decisions. Future work may refine the joke, copy, illustrations, layout, and overall visual direction. Future card types may include Spotify songs, movie posters, and other media without changing the static-site foundation.
-
-## GitHub Pages assumptions
-
-The repository is served from its root on GitHub Pages. `index.html` is the entry point; no build command or generated output directory is required. The published URL can be printed or encoded on the card that points friends to the page.
+Keep the site deployable as plain static files. Do not add frameworks, packages, build tools, backend services, authentication, APIs, persistence, dating features, or matchmaking behavior. Final branding and visual direction remain open for future refinement.
