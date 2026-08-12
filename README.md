@@ -7,26 +7,34 @@ The experience has two pages:
 - `index.html` — a scrollable landing page with the introduction and “See profiles” link.
 - `profiles.html` — a mobile-first deck of Mario Gonzalez, Filme Mario, and Fun Mario. Each profile can contain a different number of vertically scrollable cards and can be swiped left or right at any point. During a swipe, a red “Next” or green “Yes” surface appears behind the active profile before the next one is shown.
 
-After every profile has been reviewed, the profiles page shows a locally stored Instagram QR code. Its current destination, `https://www.instagram.com/your_username/`, is intentionally a placeholder. Replace both the link in `profiles.html` and `assets/images/instagram-placeholder-qr.svg` when the real profile URL is available.
+After every profile has been reviewed, the profiles page links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
 
 ## Local usage
 
-No build step or package installation is required. Open `index.html` directly, or serve the repository with any static file server.
+No build step or package installation is required. Serve the repository with any static file server so the profiles page can load `data/profiles.json`. The landing page can still be opened directly, but browsers do not reliably allow the profiles page to fetch JSON over `file://`.
 
 ## Project structure
 
-- Root HTML files contain semantic page content.
+- Root HTML files contain the page structure and application UI.
 - `css/styles.css` contains presentation and responsive rules.
-- `js/main.js` progressively enhances the profile deck; decisions are temporary and never stored or transmitted.
-- `assets/images/` contains local imagery and the placeholder QR asset.
+- `data/profiles.json` contains all profile and card content in display order.
+- `js/main.js` renders the configured cards and runs the profile deck; decisions are temporary and never stored or transmitted.
+- `assets/images/` contains local profile imagery.
 - `docs/plan.md` documents the current static-site scope.
 
-Profile sequences are authored directly in `profiles.html`. Add any number of cards inside a profile's `[data-profile-cards]` container. Supported card types are the main profile card, text, image, and image with overlaid text; each type is identified by its `data-card-type` value and matching CSS class.
+Profile sequences are authored in `data/profiles.json`. Each profile has an `id`, `name`, `accentColor`, and ordered `cards` list. Add, remove, reorder, or swap profiles and cards there without editing `profiles.html`.
+
+Supported card types and fields are:
+
+- `profile` — `image` (optional), `imageAlt`, `imagePosition` (optional), `callsign`, `name`, `age`, `catchphrase`, and `tags`.
+- `text` — `callsign`, `heading`, and `body`.
+- `image-text` — `image`, `imageAlt`, `imagePosition` (optional), `callsign`, `heading`, and `body`.
+- `image` — `image`, `imageAlt`, and `imagePosition` (optional).
+
+Image paths are relative to the site root. A profile card without an `image` uses the decorative monogram treatment. The renderer adds the visible “Scroll for more ↓” cue to every non-final card and “Left or right?” to the last card in each profile.
 
 Profile headers use the profile artwork directly and do not display numbered edition badges.
 
-Use the “Scroll for more ↓” cue on every card that has another card after it in the same profile. The cue is useful because vertical scrollbars may not be visible on mobile. Omit it from the final card in a profile sequence so visitors know they have reached the end.
-
-Image templates reference their source directly through the `<img src>` attribute. Fun Mario uses `assets/images/fun-mario.jpg`; the remaining photo slots use the local placeholder image so real photos can be added later without changing the card structure.
+Fun Mario uses `assets/images/fun-mario.jpg`; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
 
 The project intentionally excludes dependencies, build tooling, backend services, APIs, authentication, persistence, dating functionality, and matchmaking behavior.
