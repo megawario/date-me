@@ -30,11 +30,12 @@ Supported card types and fields are:
 - `text` — `callsign`, `heading`, and `body`.
 - `image-text` — `image`, `imageAlt`, `imagePosition` (optional), `callsign`, `heading`, and `body`.
 - `image` — `image`, `imageAlt`, and `imagePosition` (optional).
+- `spotify` — `embedUrl`, `title`, and `height` (optional, clamped between 300 and 480 pixels). The URL must be an `https://open.spotify.com/embed/` track, album, or artist URL.
 
 Image paths are relative to the site root. A profile card without an `image` uses the decorative monogram treatment. The renderer adds the visible “Scroll for more ↓” cue to every non-final card and “Left or right?” to the last card in each profile.
 
 Profile headers use the profile artwork directly and do not display numbered edition badges.
 
-Fun Mario uses `assets/images/fun-mario.jpg`; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
+Fun Mario uses `assets/images/fun-mario.jpg` and includes a Spotify album card configured in `data/profiles.json`; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
 
 The project intentionally excludes dependencies, build tooling, backend services, APIs, authentication, persistence, dating functionality, and matchmaking behavior.

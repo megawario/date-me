@@ -27,6 +27,7 @@ function createImage(card) {
   image.alt = card.imageAlt;
   image.loading = 'lazy';
   image.decoding = 'async';
+  image.draggable = false;
   if (card.imagePosition) image.style.objectPosition = card.imagePosition;
   return image;
 }
@@ -131,6 +132,42 @@ function renderImageCard(card, profileName, isFinalCard) {
   return section;
 }
 
+function renderSpotifyCard(card, isFinalCard) {
+  const embedUrl = new URL(card.embedUrl);
+  const isSupportedEmbed = embedUrl.origin === 'https://open.spotify.com'
+    && /^\/embed\/(track|album|artist)\/[^/]+\/?$/.test(embedUrl.pathname);
+
+  if (!isSupportedEmbed) {
+    throw new Error(`Unsupported Spotify embed URL: ${card.embedUrl}`);
+  }
+
+  const section = document.createElement('section');
+  section.className = 'profile-card profile-card--spotify';
+  section.dataset.cardType = 'spotify';
+  section.setAttribute('aria-label', card.title);
+
+  const player = document.createElement('div');
+  player.className = 'spotify-card__player';
+
+  const iframe = document.createElement('iframe');
+  iframe.src = embedUrl.toString();
+  iframe.title = card.title;
+  iframe.loading = 'lazy';
+  iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+  iframe.setAttribute('allowfullscreen', '');
+
+  const configuredHeight = Number(card.height);
+  const defaultHeight = embedUrl.pathname.includes('/artist/') ? 420 : 380;
+  const embedHeight = Number.isFinite(configuredHeight)
+    ? Math.min(480, Math.max(300, configuredHeight))
+    : defaultHeight;
+  iframe.style.setProperty('--spotify-embed-height', `${embedHeight}px`);
+
+  player.append(iframe);
+  section.append(player, createCardPrompt(isFinalCard));
+  return section;
+}
+
 function renderCard(card, profile, cardIndex) {
   const headingId = `${profile.id}-card-${cardIndex}-heading`;
   const isFinalCard = cardIndex === profile.cards.length - 1;
@@ -138,7 +175,9 @@ function renderCard(card, profile, cardIndex) {
   if (card.type === 'profile') return renderProfileCard(card, isFinalCard);
   if (card.type === 'text') return renderTextCard(card, headingId, isFinalCard);
   if (card.type === 'image-text') return renderImageTextCard(card, headingId, isFinalCard);
-  return renderImageCard(card, profile.name, isFinalCard);
+  if (card.type === 'image') return renderImageCard(card, profile.name, isFinalCard);
+  if (card.type === 'spotify') return renderSpotifyCard(card, isFinalCard);
+  throw new Error(`Unsupported card type: ${card.type}`);
 }
 
 function renderProfiles(configuration) {

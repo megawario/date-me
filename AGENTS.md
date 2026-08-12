@@ -10,3 +10,4 @@
 - Do not add package dependencies, build tooling, backend services, authentication, APIs, persistence, dating functionality, or matchmaking behavior.
 - Final branding and visual direction are intentionally undecided; avoid treating the current styling as final.
 - Keep documentation concise and update `README.md` or `docs/plan.md` when the static-site scope changes.
+- Omit QA and testing steps from implementation plans; the maintainer validates changes live.

@@ -8,7 +8,7 @@ Date-a-Mario is a framework-free personal joke site for GitHub Pages. A visitor 
 
 - `index.html` is the root landing page and keeps the GitHub Pages entry point unchanged.
 - `profiles.html` contains the focused profile deck and completion screen. It intentionally has no in-page back link.
-- Each profile owns a variable-length sequence configured in `data/profiles.json`. Sequences can contain profile, text, image, and image-with-text cards in any order.
+- Each profile owns a variable-length sequence configured in `data/profiles.json`. Sequences can contain profile, text, image, image-with-text, and Spotify cards in any order.
 - JavaScript loads the configuration, renders semantic card markup, and turns the profile list into a one-profile-at-a-time deck while CSS makes each profile's cards vertically scrollable.
 - Profile headers show artwork without numbered edition badges.
 - The renderer adds the visible “Scroll for more ↓” cue to every non-final card and the “Left or right?” decision prompt to every final card.
@@ -22,9 +22,9 @@ Date-a-Mario is a framework-free personal joke site for GitHub Pages. A visitor 
 
 ## Assets and placeholders
 
-Profile artwork and copy are maintained in `data/profiles.json`. A profile entry contains its identity, accent color, and ordered cards. Profile cards configure identity copy and tags; text cards configure a callsign, heading, and body; image cards configure an image and alternative text; image-with-text cards combine those image fields with a callsign, heading, and body. Images may also set an optional focal position.
+Profile artwork and copy are maintained in `data/profiles.json`. A profile entry contains its identity, accent color, and ordered cards. Profile cards configure identity copy and tags; text cards configure a callsign, heading, and body; image cards configure an image and alternative text; image-with-text cards combine those image fields with a callsign, heading, and body. Images may also set an optional focal position. Spotify cards configure an accessible title, a track, album, or artist embed URL, and an optional height.
 
-The current profile facets are Gonzalez (creepy-cool), Filme (cinephile), and Fun (good times). Fun Mario uses `assets/images/fun-mario.jpg`; the other image cards still use the local placeholder image until final photos are selected. The completion screen links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
+The current profile facets are Gonzalez (creepy-cool), Filme (cinephile), and Fun (good times). Fun Mario uses `assets/images/fun-mario.jpg` and a configured Spotify album embed; the other image cards still use the local placeholder image until final photos are selected. The completion screen links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
 
 ## Constraints
 

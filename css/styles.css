@@ -51,6 +51,8 @@ button {
 
 img {
   max-width: 100%;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 h1,
@@ -597,6 +599,27 @@ h2 {
   color: white;
 }
 
+.profile-card--spotify {
+  display: grid;
+  min-height: 30rem;
+  padding: 1rem 1rem 4rem;
+  place-items: center;
+  background: #121212;
+}
+
+.spotify-card__player {
+  width: min(100%, 21.25rem);
+}
+
+.spotify-card__player iframe {
+  display: block;
+  width: 100%;
+  height: var(--spotify-embed-height, 380px);
+  max-height: calc(100svh - 11rem);
+  border: 0;
+  border-radius: 0.75rem;
+}
+
 .swipe-decision-layer {
   position: absolute;
   inset: 0;
@@ -679,7 +702,8 @@ h2 {
 }
 
 .js .profile-card--image,
-.js .profile-card--image-text {
+.js .profile-card--image-text,
+.js .profile-card--spotify {
   height: 100%;
 }
 
