@@ -10,7 +10,7 @@ Date-a-Mario is a framework-free personal joke site for GitHub Pages. A visitor 
 - `profiles.html` contains the focused profile deck and completion screen. It intentionally has no in-page back link.
 - Each profile owns a variable-length sequence inside `[data-profile-cards]`. Sequences can contain profile, text, image, and image-with-text cards.
 - Profile content is semantic HTML and remains readable without JavaScript. JavaScript turns the profile list into a one-profile-at-a-time deck while CSS makes each profile's cards vertically scrollable.
-- Every non-final card in a multi-card profile should include the visible “Scroll for more ↓” cue. It makes the additional content discoverable on mobile, where the inner scrollbar may be hidden. The final card should omit the cue.
+- Every non-final card in a multi-card profile should include the visible “Scroll for more ↓” cue, centered at the bottom in small print. It makes the additional content discoverable on mobile, where the inner scrollbar may be hidden. The final card should use the same placement for the “Left or right?” decision prompt.
 
 ## Presentation and behavior
 

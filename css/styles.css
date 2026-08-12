@@ -351,6 +351,10 @@ h2 {
   backdrop-filter: blur(12px);
 }
 
+.profiles-header__inner {
+  justify-content: center;
+}
+
 .profiles-main {
   padding: 1.25rem var(--gutter) 2rem;
 }
@@ -482,12 +486,19 @@ h2 {
 }
 
 .profile-card__more {
-  margin: 1rem 0 0;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  z-index: 2;
+  width: max-content;
+  margin: 0;
   color: var(--color-accent-dark);
   font-size: 0.7rem;
   font-weight: 900;
   letter-spacing: 0.08em;
+  text-align: center;
   text-transform: uppercase;
+  transform: translateX(-50%);
 }
 
 .profile-tags {
@@ -589,8 +600,9 @@ h2 {
   color: white;
 }
 
-.profile-card__image-copy .profile-card__more {
-  margin-top: 1rem;
+.profile-card--image-text > .profile-card__more,
+.profile-card--image > .profile-card__more {
+  color: white;
 }
 
 .profile-sequence__decision {
