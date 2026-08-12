@@ -8,7 +8,7 @@ Date-a-Mario is a framework-free personal joke site for GitHub Pages. A visitor 
 
 - `index.html` is the root landing page and keeps the GitHub Pages entry point unchanged.
 - `profiles.html` contains the focused profile deck and completion screen. It intentionally has no in-page back link.
-- Each profile owns a variable-length sequence configured in `data/profiles.json`. Sequences can contain profile, text, image, image-with-text, and Spotify cards in any order.
+- Each profile owns a variable-length sequence configured in `data/profiles.json`. The root-level `shuffleProfiles` option randomizes profile order on each page load without changing card order within a profile. Sequences can contain profile, text, image, image-with-text, and Spotify cards in any order.
 - JavaScript loads the configuration, renders semantic card markup, and turns the profile list into a one-profile-at-a-time deck while CSS makes each profile's cards vertically scrollable.
 - Profile headers show artwork without numbered edition badges.
 - The renderer adds the visible “Scroll for more ↓” cue to every non-final card and the “Left or right?” decision prompt to every final card.

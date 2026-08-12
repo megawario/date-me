@@ -193,8 +193,13 @@ function renderCard(card, profile, cardIndex) {
 function renderProfiles(configuration) {
   const status = deck.querySelector('[data-profile-status]');
   const fragment = document.createDocumentFragment();
+  const profiles = [...configuration.profiles];
 
-  configuration.profiles.forEach((profile, profileIndex) => {
+  if (configuration.shuffleProfiles) {
+    profiles.sort(() => Math.random() - 0.5);
+  }
+
+  profiles.forEach((profile, profileIndex) => {
     const sequence = document.createElement('article');
     sequence.className = 'profile-sequence';
     sequence.dataset.profileIndex = String(profileIndex);

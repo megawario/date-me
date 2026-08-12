@@ -22,7 +22,7 @@ No build step or package installation is required. Serve the repository with any
 - `assets/images/` contains local profile imagery.
 - `docs/plan.md` documents the current static-site scope.
 
-Profile sequences are authored in `data/profiles.json`. Each profile has an `id`, `name`, `accentColor`, and ordered `cards` list. Add, remove, reorder, or swap profiles and cards there without editing `profiles.html`.
+Profile sequences are authored in `data/profiles.json`. Set the root-level `shuffleProfiles` option to `true` to randomize the profile order on every page load, or `false` to preserve the configured order. Each profile has an `id`, `name`, `accentColor`, and ordered `cards` list. Add, remove, reorder, or swap profiles and cards there without editing `profiles.html`; shuffling profiles does not change the order of cards within them.
 
 Supported card types and fields are:
 
