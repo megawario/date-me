@@ -348,6 +348,12 @@ h2 {
   text-underline-offset: 0.3em;
 }
 
+.landing-tease__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.4rem;
+}
+
 .landing-story {
   padding-block: clamp(5rem, 14vw, 8rem);
 }
@@ -396,10 +402,6 @@ h2 {
 .site-footer__meta {
   margin: 0;
   font-size: 0.75rem;
-}
-
-.text-link--secondary {
-  margin-left: 1.25rem;
 }
 
 /* 4. Physical card page */
