@@ -11,3 +11,9 @@
 - Final branding and visual direction are intentionally undecided; avoid treating the current styling as final.
 - Keep documentation concise and update `README.md` or `docs/plan.md` when the static-site scope changes.
 - Omit QA and testing steps from implementation plans; the maintainer validates changes live.
+
+## GitHub issue workflow
+
+- When implementing a GitHub issue, first inspect the issue body, all issue comments, and any existing implementation plans before making changes.
+- Treat the issue discussion and plan as the source of truth for scope; reflect relevant decisions in the implementation plan before coding.
+- When asked to plan an issue, post the plan back to the issue so it is available for review before implementation.
