@@ -9,6 +9,15 @@ The experience has two pages:
 
 After every profile has been reviewed, the profiles page links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
 
+## Make your own
+
+1. Fork this repository and enable GitHub Pages for your fork.
+2. Remove or replace every file under `assets/images/`; the included images are not covered by the MIT license.
+3. Edit `data/profiles.json` to define your profile variants, card order, copy, images, Spotify embeds, and whether profiles are shuffled.
+4. Replace the landing-page name, introduction, story, links, and preview image in `index.html`.
+5. Configure the printable physical card in `data/card.json`, then open `card.html` to print it or save it as a PDF.
+6. Serve the files locally while editing, then publish the updated fork through GitHub Pages.
+
 ## Local usage
 
 No build step or package installation is required. Serve the repository with any static file server so the profiles page can load `data/profiles.json`. The landing page can still be opened directly, but browsers do not reliably allow the profiles page to fetch JSON over `file://`.
