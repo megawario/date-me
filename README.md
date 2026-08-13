@@ -8,7 +8,7 @@ The experience has three pages:
 - `profiles.html` — a mobile-first deck of Mario Gonzalez, Filme Mario, and Fun Mario. Each profile can contain a different number of vertically scrollable cards and can be swiped left or right at any point. During a swipe, a red “Next” or green “Yes” surface appears behind the active profile before the next one is shown.
 - `card.html` — an ISO ID-1 physical-card preview that creates its QR code locally and prints at 85.60 × 53.98 mm.
 
-After every profile has been reviewed, the profiles page links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
+After every profile has been reviewed, the profiles page shows the Yes and No totals for the current run, adds a message based on the result, and links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
 
 ## Make your own
 
@@ -29,7 +29,7 @@ No build step or package installation is required. Serve the repository with any
 - `css/styles.css` contains presentation and responsive rules.
 - `data/profiles.json` contains all profile and card content in display order.
 - `data/card.json` contains the physical card copy, destination, colors, and optional artwork path.
-- `js/main.js` renders the configured cards and runs the profile deck; decisions are temporary and never stored or transmitted. “Review again” cleanly reloads the profiles page with the page and every profile reset to its first card.
+- `js/main.js` renders the configured cards and runs the profile deck; Yes and No decisions are counted only for the current run and are never stored or transmitted. “Review again” discards the counts and cleanly reloads the profiles page with the page and every profile reset to its first card.
 - `js/card.js` renders the printable card and generates its QR code as local SVG without an external service.
 - `assets/images/` contains local profile imagery.
 - `docs/plan.md` documents the current static-site scope.

@@ -1002,6 +1002,40 @@ h2 {
   color: var(--color-muted);
 }
 
+.profile-complete__results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  max-width: 20rem;
+  margin: 1.75rem auto 1rem;
+}
+
+.profile-complete__results div {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-surface);
+}
+
+.profile-complete__results dt {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.profile-complete__results dd {
+  margin: 0.2rem 0 0;
+  font-size: clamp(2rem, 10vw, 3rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.profile-complete .profile-complete__outcome {
+  min-height: 3rem;
+}
+
 .profile-complete__link {
   margin: 1.5rem auto 0.8rem;
 }

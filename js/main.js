@@ -241,11 +241,15 @@ function initializeDeck() {
   const feedbackRegion = document.querySelector('[data-swipe-feedback]');
   const feedback = feedbackRegion?.querySelector('.swipe-feedback__message');
   const completePanel = document.querySelector('[data-profile-complete]');
+  const yesCount = completePanel?.querySelector('[data-yes-count]');
+  const noCount = completePanel?.querySelector('[data-no-count]');
+  const swipeOutcome = completePanel?.querySelector('[data-swipe-outcome]');
   const resetButton = document.querySelector('[data-reset-deck]');
   const activeProfile = document.querySelector('[data-active-profile]');
   const profileTotal = document.querySelector('[data-profile-total]');
 
   let activeIndex = 0;
+  let decisions = { yes: 0, no: 0 };
   let pointerState = null;
   let isAnimating = false;
   const scrollBehavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
@@ -301,6 +305,19 @@ function initializeDeck() {
   }
 
   function finishDeck() {
+    if (yesCount) yesCount.textContent = String(decisions.yes);
+    if (noCount) noCount.textContent = String(decisions.no);
+
+    if (swipeOutcome) {
+      if (decisions.yes > decisions.no) {
+        swipeOutcome.textContent = 'Promising. The Marios made a pretty good impression.';
+      } else if (decisions.no > decisions.yes) {
+        swipeOutcome.textContent = 'Tough crowd. The Marios will be reviewing their life choices.';
+      } else {
+        swipeOutcome.textContent = 'Perfectly balanced. Suspiciously diplomatic.';
+      }
+    }
+
     deck.hidden = true;
     if (feedbackRegion) feedbackRegion.hidden = true;
     if (completePanel) completePanel.hidden = false;
@@ -315,6 +332,7 @@ function initializeDeck() {
 
     isAnimating = true;
     const sign = direction === 'right' ? 1 : -1;
+    decisions[direction === 'right' ? 'yes' : 'no'] += 1;
 
     showDecisionLayer(direction);
     profile.classList.add(`is-swiped-${direction === 'right' ? 'right' : 'left'}`);
@@ -424,6 +442,7 @@ function initializeDeck() {
   });
 
   resetButton?.addEventListener('click', () => {
+    decisions = { yes: 0, no: 0 };
     resetScrollPositions();
     window.location.replace('profiles.html');
   });

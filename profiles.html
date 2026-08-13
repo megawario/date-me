@@ -36,9 +36,19 @@
         </div>
 
         <section class="profile-complete" data-profile-complete hidden tabindex="-1" aria-labelledby="complete-title">
-          <p class="eyebrow">You survived every Mario</p>
-          <h2 id="complete-title">There is only one profile left.</h2>
-          <p>Continue this extremely rigorous selection process on Instagram.</p>
+          <p class="eyebrow">You checked all the Marios.</p>
+          <h2 id="complete-title">Should we meet in person?</h2>
+          <dl class="profile-complete__results" aria-label="Your swipe results">
+            <div>
+              <dt>Yes</dt>
+              <dd data-yes-count>0</dd>
+            </div>
+            <div>
+              <dt>No</dt>
+              <dd data-no-count>0</dd>
+            </div>
+          </dl>
+          <p class="profile-complete__outcome" data-swipe-outcome></p>
           <a class="button profile-complete__link" href="https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==">Open Instagram</a>
           <p class="profile-complete__note">@radioactive_space_hamster</p>
           <button class="button button--reset" type="button" data-reset-deck>Review again</button>
