@@ -182,6 +182,15 @@ h2 {
   cursor: pointer;
 }
 
+.button--secondary {
+  background: transparent;
+  color: var(--color-accent-dark);
+}
+
+.button--secondary:hover {
+  color: white;
+}
+
 /* 3. Landing page */
 
 .landing-hero {
@@ -216,6 +225,12 @@ h2 {
   margin-bottom: 1.75rem;
   color: var(--color-muted);
   font-size: clamp(1.05rem, 3.8vw, 1.25rem);
+}
+
+.landing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .profile-preview {
@@ -347,7 +362,169 @@ h2 {
   font-size: 0.75rem;
 }
 
-/* 4. Profiles page and progressively enhanced deck */
+.text-link--secondary {
+  margin-left: 1.25rem;
+}
+
+/* 4. Physical card page */
+
+.card-page {
+  background: #eee8e1;
+}
+
+.card-page__home-link {
+  margin-top: 0;
+  color: var(--color-accent-dark);
+}
+
+.card-maker {
+  padding: clamp(2.5rem, 8vw, 5rem) var(--gutter);
+}
+
+.card-maker__inner {
+  display: grid;
+  gap: clamp(2rem, 7vw, 5rem);
+  align-items: center;
+}
+
+.card-maker__intro {
+  max-width: 34rem;
+}
+
+.card-maker__intro h1 {
+  margin-bottom: 1.25rem;
+  font-size: clamp(3rem, 12vw, 5.5rem);
+}
+
+.card-maker__intro > p:not(.eyebrow) {
+  color: var(--color-muted);
+}
+
+.card-maker__intro code {
+  font-size: 0.9em;
+}
+
+.card-maker__intro .button {
+  cursor: pointer;
+}
+
+.card-preview {
+  min-width: 0;
+}
+
+.physical-card {
+  --card-foreground: #25221f;
+  --card-background: #fbf7f1;
+  --card-accent: #b44738;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: 85.6mm;
+  height: 53.98mm;
+  max-width: 100%;
+  overflow: hidden;
+  grid-template-columns: minmax(0, 1fr) 31mm;
+  gap: 3mm;
+  border-radius: 3mm;
+  padding: 4mm;
+  background: var(--card-background);
+  box-shadow: 0 1rem 3rem rgb(37 34 31 / 22%);
+  color: var(--card-foreground);
+}
+
+.physical-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(105deg, var(--card-background) 0 51%, transparent 78%);
+  content: "";
+}
+
+.physical-card__artwork {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: -2;
+  width: 60%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+.physical-card__copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.physical-card__brand,
+.physical-card__qr-label,
+.physical-card__url {
+  font-size: 6pt;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.physical-card__brand {
+  margin-bottom: auto;
+  color: var(--card-accent);
+}
+
+.physical-card__copy h2 {
+  margin-bottom: 2mm;
+  font-size: 21pt;
+  line-height: 0.9;
+}
+
+.physical-card__prompt {
+  max-width: 38mm;
+  margin-bottom: 0;
+  font-size: 8pt;
+  font-weight: 700;
+}
+
+.physical-card__scan {
+  align-self: center;
+  min-width: 0;
+  padding: 1.5mm;
+  border-radius: 2mm;
+  background: white;
+  color: #25221f;
+  text-align: center;
+}
+
+.physical-card__qr,
+.physical-card__qr svg {
+  display: block;
+  width: 28mm;
+  height: 28mm;
+}
+
+.physical-card__qr-label {
+  margin: 1mm 0 0;
+  color: var(--card-accent);
+}
+
+.physical-card__url {
+  overflow: hidden;
+  margin: 0.5mm 0 0;
+  font-size: 4.5pt;
+  letter-spacing: 0;
+  text-overflow: ellipsis;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.card-preview__status {
+  width: min(85.6mm, 100%);
+  margin: 1rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* 5. Profiles page and progressively enhanced deck */
 
 .profiles-page {
   background: #f6f0e9;
@@ -798,7 +975,7 @@ h2 {
   font-size: 0.72rem;
 }
 
-/* 5. Larger screens and accessibility preferences */
+/* 6. Larger screens, printing, and accessibility preferences */
 
 @media (min-width: 46rem) {
   .site-header__inner,
@@ -821,6 +998,10 @@ h2 {
     display: inline;
   }
 
+  .card-maker__inner {
+    grid-template-columns: minmax(18rem, 0.8fr) minmax(0, 1.2fr);
+  }
+
   .profile-preview {
     width: 19rem;
     height: 27rem;
@@ -841,6 +1022,47 @@ h2 {
 
   .profile-card__body {
     padding: 1.55rem 1.55rem 3.8rem;
+  }
+}
+
+@media print {
+  @page {
+    size: 85.6mm 53.98mm;
+    margin: 0;
+  }
+
+  html,
+  body.card-page {
+    width: 85.6mm;
+    height: 53.98mm;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    background: transparent;
+  }
+
+  .card-page__chrome {
+    display: none !important;
+  }
+
+  .card-maker,
+  .card-maker__inner,
+  .card-preview {
+    display: block;
+    width: 85.6mm;
+    height: 53.98mm;
+    margin: 0;
+    padding: 0;
+  }
+
+  .physical-card {
+    width: 85.6mm;
+    max-width: none;
+    height: 53.98mm;
+    border-radius: 0;
+    box-shadow: none;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 }
 

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Create and print a physical Date-a-Mario card.">
+    <title>Print your card | Date-a-Mario</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/card.js" defer></script>
+  </head>
+  <body class="card-page">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header card-page__chrome">
+      <div class="container site-header__inner">
+        <a class="site-brand" href="index.html" aria-label="Date-a-Mario home">Date-a-Mario</a>
+        <a class="text-link card-page__home-link" href="index.html">Back home</a>
+      </div>
+    </header>
+
+    <main id="main-content" class="card-maker">
+      <div class="container card-maker__inner">
+        <div class="card-maker__intro card-page__chrome">
+          <p class="eyebrow">The physical bit</p>
+          <h1>Print a card. Create intrigue.</h1>
+          <p>Edit <code>data/card.json</code>, then print this page at 100% scale. Only the card below appears on paper.</p>
+          <button class="button button--primary" type="button" data-print-card>Print card</button>
+        </div>
+
+        <section class="card-preview" aria-labelledby="card-preview-title">
+          <h2 id="card-preview-title" class="visually-hidden">Physical card preview</h2>
+          <article class="physical-card" data-physical-card aria-busy="true">
+            <img class="physical-card__artwork" data-card-artwork alt="" hidden>
+            <div class="physical-card__copy">
+              <p class="physical-card__brand" data-card-brand>Date-a-Mario</p>
+              <h2 data-card-headline>One link. Several Marios.</h2>
+              <p class="physical-card__prompt" data-card-prompt>Scan to choose responsibly.</p>
+            </div>
+            <div class="physical-card__scan">
+              <div class="physical-card__qr" data-card-qr aria-label="QR code"></div>
+              <p class="physical-card__qr-label" data-card-qr-label>Scan me</p>
+              <p class="physical-card__url" data-card-display-url>example.com/date-me</p>
+            </div>
+          </article>
+          <p class="card-preview__status card-page__chrome" data-card-status role="status">Loading card configuration…</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
