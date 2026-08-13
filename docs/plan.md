@@ -17,7 +17,7 @@ Date-a-Mario is a framework-free personal joke site and reusable GitHub Pages te
 ## Presentation and behavior
 
 - `css/styles.css` uses mobile-first rules, fluid sizing, scroll snapping, visible focus states, and reduced-motion support.
-- `js/main.js` activates the deck only when `[data-profile-deck]` is present. It renders the JSON configuration, then adds pointer dragging, behind-card decision feedback, arrow-key decisions, keyboard card scrolling, progress, completion, and page-reload behavior for starting again.
+- `js/main.js` activates the deck only when `[data-profile-deck]` is present. It renders the JSON configuration, then adds pointer dragging, behind-card decision feedback, arrow-key decisions, keyboard card scrolling, progress, completion, and a clean page reload that resets the page and every profile to its first card when starting again.
 - Swipe decisions exist only in memory for the current visit. Nothing is persisted or transmitted.
 - Internal pages and assets use relative paths so the site works from the repository root on GitHub Pages.
 - `data/card.json` configures the physical card's brand, headline, prompt, destination and displayed URLs, QR label, theme colors, and optional local artwork. `js/card.js` applies that configuration with text-safe DOM APIs and creates a byte-mode QR code as SVG entirely in the browser.

@@ -29,7 +29,7 @@ No build step or package installation is required. Serve the repository with any
 - `css/styles.css` contains presentation and responsive rules.
 - `data/profiles.json` contains all profile and card content in display order.
 - `data/card.json` contains the physical card copy, destination, colors, and optional artwork path.
-- `js/main.js` renders the configured cards and runs the profile deck; decisions are temporary and never stored or transmitted. “Review again” reloads the profiles page for a fresh visit.
+- `js/main.js` renders the configured cards and runs the profile deck; decisions are temporary and never stored or transmitted. “Review again” cleanly reloads the profiles page with the page and every profile reset to its first card.
 - `js/card.js` renders the printable card and generates its QR code as local SVG without an external service.
 - `assets/images/` contains local profile imagery.
 - `docs/plan.md` documents the current static-site scope.
