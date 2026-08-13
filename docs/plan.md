@@ -17,14 +17,14 @@ Date-a-Mario is a framework-free personal joke site for GitHub Pages. A visitor 
 
 - `css/styles.css` uses mobile-first rules, fluid sizing, scroll snapping, visible focus states, and reduced-motion support.
 - `js/main.js` activates the deck only when `[data-profile-deck]` is present. It renders the JSON configuration, then adds pointer dragging, behind-card decision feedback, arrow-key decisions, keyboard card scrolling, progress, completion, and page-reload behavior for starting again.
-- Swipe decisions exist only in memory for the current visit. Nothing is persisted or transmitted.
+- Swipe decisions are counted as Yes or No only in memory for the current run, displayed on completion, and discarded when the flow restarts or is left. Nothing is persisted or transmitted.
 - Internal pages and assets use relative paths so the site works from the repository root on GitHub Pages.
 
 ## Assets and placeholders
 
 Profile artwork and copy are maintained in `data/profiles.json`. A profile entry contains its identity, accent color, and ordered cards. Profile cards configure identity copy and tags; text cards configure a callsign, heading, and body; image cards configure an image and alternative text; image-with-text cards combine those image fields with a callsign, heading, and body. Images may also set an optional focal position. Spotify cards configure an accessible title, a track, album, or artist embed URL, an optional height, and optional callsign, heading, and body copy displayed over the player without blocking its controls.
 
-The current profile facets are Gonzalez (creepy-cool), Filme (cinephile), and Fun (good times). Fun Mario uses `assets/images/fun-mario.jpg` and a configured Spotify album embed; the other image cards still use the local placeholder image until final photos are selected. The completion screen links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
+The current profile facets are Gonzalez (creepy-cool), Filme (cinephile), and Fun (good times). Fun Mario uses `assets/images/fun-mario.jpg` and a configured Spotify album embed; the other image cards still use the local placeholder image until final photos are selected. The completion screen displays the current run's Yes and No totals with an outcome message, then links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
 
 ## Constraints
 

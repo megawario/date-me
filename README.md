@@ -7,7 +7,7 @@ The experience has two pages:
 - `index.html` — a scrollable landing page with the introduction and “See profiles” link.
 - `profiles.html` — a mobile-first deck of Mario Gonzalez, Filme Mario, and Fun Mario. Each profile can contain a different number of vertically scrollable cards and can be swiped left or right at any point. During a swipe, a red “Next” or green “Yes” surface appears behind the active profile before the next one is shown.
 
-After every profile has been reviewed, the profiles page links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
+After every profile has been reviewed, the profiles page shows the Yes and No totals for the current run, adds a message based on the result, and links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
 
 ## Local usage
 
@@ -18,7 +18,7 @@ No build step or package installation is required. Serve the repository with any
 - Root HTML files contain the page structure and application UI.
 - `css/styles.css` contains presentation and responsive rules.
 - `data/profiles.json` contains all profile and card content in display order.
-- `js/main.js` renders the configured cards and runs the profile deck; decisions are temporary and never stored or transmitted. “Review again” reloads the profiles page for a fresh visit.
+- `js/main.js` renders the configured cards and runs the profile deck; Yes and No decisions are counted only for the current run and are never stored or transmitted. “Review again” reloads the profiles page, discarding the counts for a fresh visit.
 - `assets/images/` contains local profile imagery.
 - `docs/plan.md` documents the current static-site scope.
 
