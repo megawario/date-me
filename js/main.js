@@ -14,6 +14,17 @@ document.querySelectorAll('[data-current-year]').forEach((year) => {
 
 const deck = document.querySelector('[data-profile-deck]');
 
+if (deck && 'scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
+function resetScrollPositions() {
+  window.scrollTo(0, 0);
+  document.querySelectorAll('[data-profile-cards]').forEach((scroller) => {
+    scroller.scrollTop = 0;
+  });
+}
+
 function createTextElement(tagName, className, text) {
   const element = document.createElement(tagName);
   if (className) element.className = className;
@@ -239,6 +250,7 @@ function initializeDeck() {
   let isAnimating = false;
   const scrollBehavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
 
+  resetScrollPositions();
   if (profileTotal) profileTotal.textContent = String(profiles.length);
 
   function currentProfile() {
@@ -411,11 +423,20 @@ function initializeDeck() {
     }
   });
 
-  resetButton?.addEventListener('click', () => window.location.reload());
+  resetButton?.addEventListener('click', () => {
+    resetScrollPositions();
+    window.location.replace('profiles.html');
+  });
   updateStack();
 }
 
 if (deck) {
+  window.addEventListener('pageshow', (event) => {
+    if (!event.persisted) return;
+    resetScrollPositions();
+    window.location.reload();
+  });
+
   fetch('data/profiles.json')
     .then((response) => response.json())
     .then((configuration) => {
