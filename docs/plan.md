@@ -2,11 +2,11 @@
 
 ## Summary
 
-Date-a-Mario is a framework-free personal joke site for GitHub Pages. A visitor can print a physical card that points to the landing page, then follow the “See profiles” link, review three facets of Mario—Mario Gonzalez, Filme Mario, and Fun Mario—and reach an Instagram QR screen after making a temporary left-or-right decision on every profile.
+Date-a-Mario is a framework-free personal joke site and reusable GitHub Pages template. A visitor can print a physical card that points to the landing page, then follow the “See profiles” link, review three facets of Mario—Mario Gonzalez, Filme Mario, and Fun Mario—and reach an Instagram QR screen after making a temporary left-or-right decision on every profile.
 
 ## Page structure
 
-- `index.html` is the root landing page and keeps the GitHub Pages entry point unchanged.
+- `index.html` is the root landing page and keeps the GitHub Pages entry point unchanged. Its final section explains the real-world motivation and links to the source, setup guide, and printable physical card.
 - `card.html` previews and prints one ISO ID-1 physical card at 85.60 × 53.98 mm; the landing page links to it.
 - `profiles.html` contains the focused profile deck and completion screen. It intentionally has no in-page back link.
 - Each profile owns a variable-length sequence configured in `data/profiles.json`. The root-level `shuffleProfiles` option randomizes profile order on each page load without changing card order within a profile. Sequences can contain profile, text, image, image-with-text, and Spotify cards in any order.
