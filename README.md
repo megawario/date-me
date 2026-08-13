@@ -39,3 +39,7 @@ Profile headers use the profile artwork directly and do not display numbered edi
 Fun Mario uses `assets/images/fun-mario.jpg` and includes a Spotify album card configured in `data/profiles.json`; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
 
 The project intentionally excludes dependencies, build tooling, backend services, APIs, authentication, persistence, dating functionality, and matchmaking behavior.
+
+## License
+
+The source code, documentation, and other original non-image content are available under the [MIT License](LICENSE). Files under `assets/images/` are excluded from that license and remain Copyright © 2026 Mário Pinto, all rights reserved. Forks and other redistributed or deployed derivatives must remove or replace those images. Third-party names, trademarks, embedded content, and services—including Spotify content—remain subject to their owners' terms.
