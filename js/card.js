@@ -1,5 +1,5 @@
 /**
- * Physical card renderer. Content and colors come from data/card.json.
+ * Physical card renderer. Content and colors come from data/card.js.
  * The dependency-free QR encoder creates byte-mode QR codes at level L.
  */
 
@@ -316,13 +316,14 @@ function renderCard(configuration) {
 
 printButton?.addEventListener('click', () => window.print());
 
-fetch('data/card.json')
-  .then((response) => {
-    if (!response.ok) throw new Error(`Could not load card configuration (${response.status}).`);
-    return response.json();
-  })
-  .then(renderCard)
-  .catch((error) => {
+if (window.dateMeCardConfig) {
+  try {
+    renderCard(window.dateMeCardConfig);
+  } catch (error) {
     card.setAttribute('aria-busy', 'false');
     status.textContent = `Card unavailable: ${error.message}`;
-  });
+  }
+} else {
+  card.setAttribute('aria-busy', 'false');
+  status.textContent = 'Card unavailable: configuration could not be loaded.';
+}

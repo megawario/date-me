@@ -1,7 +1,7 @@
 /**
  * Date-a-Mario progressive enhancement.
  *
- * Profile content is loaded from data/profiles.json and rendered as a
+ * Profile content is provided by data/profiles.js and rendered as a
  * variable-length card sequence. Decisions stay in memory and are never
  * stored or sent.
  */
@@ -456,14 +456,16 @@ if (deck) {
     window.location.reload();
   });
 
-  fetch('data/profiles.json')
-    .then((response) => response.json())
-    .then((configuration) => {
-      renderProfiles(configuration);
+  if (window.dateMeProfilesConfig) {
+    try {
+      renderProfiles(window.dateMeProfilesConfig);
       initializeDeck();
-    })
-    .catch(() => {
+    } catch (error) {
       const status = deck.querySelector('[data-profile-status]');
       if (status) status.textContent = 'The profiles could not be loaded.';
-    });
+    }
+  } else {
+    const status = deck.querySelector('[data-profile-status]');
+    if (status) status.textContent = 'The profiles could not be loaded.';
+  }
 }

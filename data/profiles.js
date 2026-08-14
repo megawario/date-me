@@ -1,4 +1,4 @@
-{
+window.dateMeProfilesConfig = {
   "shuffleProfiles": true,
   "profiles": [
     {
@@ -109,4 +109,4 @@
       ]
     }
   ]
-}
+};
