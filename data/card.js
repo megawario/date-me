@@ -1,4 +1,4 @@
-{
+window.dateMeCardConfig = {
   "brand": "Date-a-Mario",
   "headline": "One link. Several Marios.",
   "prompt": "Scan to choose responsibly.",
@@ -9,4 +9,4 @@
   "backgroundColor": "#fbf7f1",
   "accentColor": "#b44738",
   "artwork": "assets/images/landing01.jpg"
-}
+};

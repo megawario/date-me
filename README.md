@@ -14,27 +14,27 @@ After every profile has been reviewed, the profiles page shows the Yes and No to
 
 1. Fork this repository and enable GitHub Pages for your fork.
 2. Remove or replace every file under `assets/images/`; the included images are not covered by the MIT license.
-3. Edit `data/profiles.json` to define your profile variants, card order, copy, images, Spotify embeds, and whether profiles are shuffled.
+3. Edit `data/profiles.js` to define your profile variants, card order, copy, images, Spotify embeds, and whether profiles are shuffled.
 4. Replace the landing-page name, introduction, story, links, and preview image in `index.html`.
-5. Configure the printable physical card in `data/card.json`, then open `card.html` to print it or save it as a PDF.
-6. Serve the files locally while editing, then publish the updated fork through GitHub Pages.
+5. Configure the printable physical card in `data/card.js`, then open `card.html` to print it or save it as a PDF.
+6. Open the files directly while editing or publish the updated fork through GitHub Pages.
 
 ## Local usage
 
-No build step or package installation is required. Serve the repository with any static file server so the profiles page can load `data/profiles.json`. The landing page can still be opened directly, but browsers do not reliably allow the profiles page to fetch JSON over `file://`.
+No build step, package installation, or local server is required. Open `index.html`, `profiles.html`, or `card.html` directly in a browser; the JavaScript configuration files work over `file://` as well as GitHub Pages.
 
 ## Project structure
 
 - Root HTML files contain the page structure and application UI.
 - `css/styles.css` contains presentation and responsive rules.
-- `data/profiles.json` contains all profile and card content in display order.
-- `data/card.json` contains the physical card copy, destination, colors, and optional artwork path.
+- `data/profiles.js` contains all profile and card content in display order.
+- `data/card.js` contains the physical card copy, destination, colors, and optional artwork path.
 - `js/main.js` renders the configured cards and runs the profile deck; Yes and No decisions are counted only for the current run and are never stored or transmitted. “Review again” discards the counts and cleanly reloads the profiles page with the page and every profile reset to its first card.
 - `js/card.js` renders the printable card and generates its QR code as local SVG without an external service.
 - `assets/images/` contains local profile imagery.
 - `docs/plan.md` documents the current static-site scope.
 
-Profile sequences are authored in `data/profiles.json`. Set the root-level `shuffleProfiles` option to `true` to randomize the profile order on every page load, or `false` to preserve the configured order. Each profile has an `id`, `name`, `accentColor`, and ordered `cards` list. Add, remove, reorder, or swap profiles and cards there without editing `profiles.html`; shuffling profiles does not change the order of cards within them.
+Profile sequences are authored in `data/profiles.js`, as the value assigned to `window.dateMeProfilesConfig`. Set the root-level `shuffleProfiles` option to `true` to randomize the profile order on every page load, or `false` to preserve the configured order. Each profile has an `id`, `name`, `accentColor`, and ordered `cards` list. Add, remove, reorder, or swap profiles and cards there without editing `profiles.html`; shuffling profiles does not change the order of cards within them.
 
 Supported card types and fields are:
 
@@ -48,16 +48,16 @@ Image paths are relative to the site root. A profile card without an `image` use
 
 Profile headers use the profile artwork directly and do not display numbered edition badges.
 
-Fun Mario uses `assets/images/fun-mario.jpg` and includes a Spotify album card configured in `data/profiles.json`; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
+Fun Mario uses `assets/images/fun-mario.jpg` and includes a Spotify album card configured in `data/profiles.js`; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
 
 The project intentionally excludes dependencies, build tooling, backend services, APIs, authentication, persistence, dating functionality, and matchmaking behavior.
 
 ## Create and print a physical card
 
 1. Fork the repository and replace every protected file in `assets/images/` with artwork you own or are permitted to use.
-2. Edit `data/card.json`. Set `destinationUrl` to the complete public URL the QR should open, and use `displayUrl` for the shorter fallback address printed below it.
+2. Edit `data/card.js`, in the value assigned to `window.dateMeCardConfig`. Set `destinationUrl` to the complete public URL the QR should open, and use `displayUrl` for the shorter fallback address printed below it.
 3. Customize `brand`, `headline`, `prompt`, `qrLabel`, `foregroundColor`, `backgroundColor`, and `accentColor`. Set `artwork` to a relative local image path, or to an empty string for no artwork.
-4. Serve the repository with a static HTTP server and open `card.html`; browsers do not reliably load the JSON over `file://`.
+4. Open `card.html` directly in a browser (or serve it through GitHub Pages).
 5. Use “Print card,” select 100% or actual-size scaling, and disable browser headers and footers. Print on card stock or save the result as a PDF. To create an image, capture or convert the saved PDF at its original proportions.
 6. Cut the card to the ISO ID-1 dimensions, 85.60 × 53.98 mm. The QR includes its own white quiet zone and the displayed URL remains available if scanning fails.
 
