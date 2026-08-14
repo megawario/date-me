@@ -73,8 +73,7 @@ window.dateMeProfilesConfig = {
       "cards": [
         {
           "type": "profile",
-          "image": "assets/images/fun-mario.gif",
-          "reducedMotionImage": "assets/images/fun-mario.jpg",
+          "image": "assets/images/fun-mario.jpg",
           "imageAlt": "Fun Mario enjoying a concert with the crowd",
           "imagePosition": "50% 72%",
           "callsign": "The fun one",

@@ -62,7 +62,7 @@ Keep GIF files reasonably small so the page remains quick to load on mobile conn
 
 Profile headers use the profile artwork directly and do not display numbered edition badges.
 
-Fun Mario uses `assets/images/fun-mario.gif` with `assets/images/fun-mario.jpg` as its reduced-motion fallback and includes a Spotify album card configured in `data/profiles.js`; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
+Fun Mario uses `assets/images/fun-mario.jpg` and includes a Spotify album card configured in `data/profiles.js`; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
 
 The project intentionally excludes dependencies, build tooling, backend services, APIs, authentication, persistence, dating functionality, and matchmaking behavior.
 
