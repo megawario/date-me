@@ -66,11 +66,11 @@
               </li>
               <li>
                 <h3>Learn where things live</h3>
-                <p>On your fork, select a filename to open it and use the pencil icon to edit it in the browser. The main files you will use are <code>index.html</code> for the landing page, <code>data/profiles.json</code> for profile cards, <code>data/card.json</code> for the printable card, and <code>assets/images/</code> for pictures.</p>
+                <p>On your fork, select a filename to open it and use the pencil icon to edit it in the browser. The main files you will use are <code>index.html</code> for the landing page, <code>data/profiles.js</code> for profile cards, <code>data/card.js</code> for the printable card, and <code>assets/images/</code> for pictures.</p>
               </li>
               <li>
                 <h3>Replace the sample pictures</h3>
-                <p>Open the <code>assets/images</code> folder and upload your replacements. Keep the filenames, or update every matching image path in <code>data/profiles.json</code> and <code>data/card.json</code>. You can also delete image cards you do not want.</p>
+                <p>Open the <code>assets/images</code> folder and upload your replacements. Keep the filenames, or update every matching image path in <code>data/profiles.js</code> and <code>data/card.js</code>. You can also delete image cards you do not want.</p>
               </li>
               <li>
                 <h3>Make the landing page sound like you</h3>
@@ -78,11 +78,11 @@
               </li>
               <li>
                 <h3>Build your profile sequence</h3>
-                <p>Open <code>data/profiles.json</code>. Each item in <code>profiles</code> is one version of you, and its <code>cards</code> appear from top to bottom before a visitor chooses left or right. Keep the punctuation, quotation marks, brackets, and commas intact: this file is JSON, so a missing comma can stop it from loading.</p>
+                <p>Open <code>data/profiles.js</code>. Each item in <code>profiles</code> is one version of you, and its <code>cards</code> appear from top to bottom before a visitor chooses left or right. Keep the punctuation, quotation marks, brackets, and commas intact: a missing comma can stop the configuration from loading.</p>
               </li>
               <li>
                 <h3>Configure and print the physical card</h3>
-                <p>In <code>data/card.json</code>, set <code>destinationUrl</code> to your full published site address and <code>displayUrl</code> to the shorter address you want printed. Then open <code>card.html</code>, choose “Print card,” use 100% or actual-size scaling, and turn off browser headers and footers.</p>
+                <p>In <code>data/card.js</code>, set <code>destinationUrl</code> to your full published site address and <code>displayUrl</code> to the shorter address you want printed. Then open <code>card.html</code>, choose “Print card,” use 100% or actual-size scaling, and turn off browser headers and footers.</p>
               </li>
               <li>
                 <h3>Turn on GitHub Pages</h3>
@@ -146,8 +146,8 @@
             <dl class="guide-troubleshooting">
               <div><dt>The page is not online yet</dt><dd>Check Settings → Pages. Confirm the source is the <code>main</code> branch and <code>/(root)</code>, then allow a few minutes for the first deployment.</dd></div>
               <div><dt>Pictures are missing</dt><dd>Check the spelling and capitalization of the filename and path. GitHub Pages treats <code>Photo.jpg</code> and <code>photo.jpg</code> as different files.</dd></div>
-              <div><dt>The profiles page says it cannot load</dt><dd>Review the most recent edit to <code>data/profiles.json</code>. Look especially for a missing comma, quotation mark, or closing bracket.</dd></div>
-              <div><dt>The QR code goes to the wrong place</dt><dd>Update <code>destinationUrl</code> in <code>data/card.json</code> with the complete public URL, save it, and reopen <code>card.html</code> before printing again.</dd></div>
+              <div><dt>The profiles page says it cannot load</dt><dd>Review the most recent edit to <code>data/profiles.js</code>. Look especially for a missing comma, quotation mark, or closing bracket.</dd></div>
+              <div><dt>The QR code goes to the wrong place</dt><dd>Update <code>destinationUrl</code> in <code>data/card.js</code> with the complete public URL, save it, and reopen <code>card.html</code> before printing again.</dd></div>
             </dl>
           </div>
         </div>
