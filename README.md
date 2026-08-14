@@ -39,17 +39,30 @@ Profile sequences are authored in `data/profiles.js`, as the value assigned to `
 
 Supported card types and fields are:
 
-- `profile` — `image` (optional), `imageAlt`, `imagePosition` (optional), `callsign`, `name`, `age`, `catchphrase`, and `tags`.
+- `profile` — `image` (optional), `reducedMotionImage` (optional), `imageAlt`, `imagePosition` (optional), `callsign`, `name`, `age`, `catchphrase`, and `tags`.
 - `text` — `callsign`, `heading`, and `body`.
-- `image-text` — `image`, `imageAlt`, `imagePosition` (optional), `callsign`, `heading`, and `body`.
-- `image` — `image`, `imageAlt`, and `imagePosition` (optional).
+- `image-text` — `image`, `reducedMotionImage` (optional), `imageAlt`, `imagePosition` (optional), `callsign`, `heading`, and `body`.
+- `image` — `image`, `reducedMotionImage` (optional), `imageAlt`, and `imagePosition` (optional).
 - `spotify` — `embedUrl`, accessible iframe `title`, `callsign` (optional), `heading` (optional), `body` (optional), and `height` (optional, clamped between 300 and 480 pixels). The URL must be an `https://open.spotify.com/embed/` track, album, or artist URL. Configured copy appears over the player without blocking its controls.
 
 Image paths are relative to the site root. A profile card without an `image` uses the decorative monogram treatment. The renderer adds the visible “Scroll for more ↓” cue to every non-final card and “Left or right?” to the last card in each profile.
 
+The existing `image` field accepts local GIF files as well as still images; GIFs play normally on profile, image, and image-with-text cards. For an animated GIF, set `reducedMotionImage` to a local static image so visitors who prefer reduced motion receive that image instead:
+
+```json
+{
+  "type": "image",
+  "image": "assets/images/mario-wave.gif",
+  "reducedMotionImage": "assets/images/mario-wave.jpg",
+  "imageAlt": "Mario waves from a sunlit street"
+}
+```
+
+Keep GIF files reasonably small so the page remains quick to load on mobile connections.
+
 Profile headers use the profile artwork directly and do not display numbered edition badges.
 
-Fun Mario uses `assets/images/fun-mario.jpg` and includes a Spotify album card configured in `data/profiles.js`; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
+Fun Mario uses `assets/images/fun-mario.gif` with `assets/images/fun-mario.jpg` as its reduced-motion fallback and includes a Spotify album card configured in `data/profiles.js`; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
 
 The project intentionally excludes dependencies, build tooling, backend services, APIs, authentication, persistence, dating functionality, and matchmaking behavior.
 

@@ -34,7 +34,10 @@ function createTextElement(tagName, className, text) {
 
 function createImage(card) {
   const image = document.createElement('img');
-  image.src = card.image;
+  const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  image.src = prefersReducedMotion && card.reducedMotionImage
+    ? card.reducedMotionImage
+    : card.image;
   image.alt = card.imageAlt;
   image.loading = 'lazy';
   image.decoding = 'async';
