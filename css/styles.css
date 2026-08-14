@@ -390,6 +390,170 @@ h2 {
   text-underline-offset: 0.3em;
 }
 
+/* 4. Create-your-own guide */
+
+.guide-hero {
+  padding-block: clamp(4rem, 12vw, 8rem);
+}
+
+.guide-hero__inner {
+  max-width: 48rem;
+}
+
+.guide-hero h1,
+.guide-section h2,
+.guide-references h2 {
+  margin-bottom: 1.25rem;
+  font-size: clamp(2.8rem, 12vw, 5.5rem);
+}
+
+.guide-hero > div > p:not(.eyebrow) {
+  max-width: 39rem;
+  color: var(--color-muted);
+  font-size: clamp(1.05rem, 3.8vw, 1.25rem);
+}
+
+.guide-hero__actions,
+.guide-references__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.guide-section,
+.guide-references {
+  padding-block: clamp(4rem, 10vw, 7rem);
+}
+
+.guide-section--paper,
+.guide-references {
+  background: var(--color-paper);
+}
+
+.guide-layout {
+  display: grid;
+  gap: 2rem;
+}
+
+.guide-section__heading {
+  max-width: 25rem;
+}
+
+.guide-section__content {
+  max-width: 43rem;
+}
+
+.guide-section__content > p,
+.guide-steps p,
+.guide-card-types dd,
+.guide-troubleshooting dd {
+  color: var(--color-muted);
+}
+
+.guide-section h3,
+.guide-callout h3 {
+  margin: 1.75rem 0 0.55rem;
+  font-size: 1.1rem;
+}
+
+.guide-section h3:first-child {
+  margin-top: 0;
+}
+
+.guide-checklist,
+.guide-references ul {
+  display: grid;
+  gap: 0.8rem;
+  padding-left: 1.25rem;
+}
+
+.guide-checklist li::marker,
+.guide-steps li::marker {
+  color: var(--color-accent);
+  font-weight: 900;
+}
+
+.guide-callout {
+  margin-top: 1.75rem;
+  border-left: 0.35rem solid var(--color-accent);
+  padding: 1.15rem 1.25rem;
+  background: var(--color-accent-soft);
+}
+
+.guide-callout h3 {
+  margin-top: 0;
+}
+
+.guide-callout p {
+  margin-bottom: 0;
+}
+
+.guide-steps {
+  display: grid;
+  gap: 2rem;
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.guide-steps h3 {
+  margin-top: 0;
+}
+
+.guide-example {
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: var(--color-ink);
+  color: #f9eee5;
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.guide-card-types,
+.guide-troubleshooting {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0 0;
+}
+
+.guide-card-types div,
+.guide-troubleshooting div {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+}
+
+.guide-card-types dt,
+.guide-troubleshooting dt {
+  margin-bottom: 0.25rem;
+  font-weight: 800;
+}
+
+.guide-card-types dd,
+.guide-troubleshooting dd {
+  margin: 0;
+}
+
+.guide-references__inner {
+  max-width: 48rem;
+}
+
+.guide-references ul {
+  margin-bottom: 0;
+}
+
+.guide-page a:not(.button):not(.site-brand):not(.skip-link) {
+  color: var(--color-accent-dark);
+  font-weight: 700;
+  text-underline-offset: 0.2em;
+}
+
+/* 5. Shared footer */
+
 .site-footer {
   border-top: 1px solid var(--color-border);
   color: var(--color-muted);
@@ -404,7 +568,7 @@ h2 {
   font-size: 0.75rem;
 }
 
-/* 4. Physical card page */
+/* 6. Physical card page */
 
 .card-page {
   background: #eee8e1;
@@ -562,7 +726,7 @@ h2 {
   text-align: center;
 }
 
-/* 5. Profiles page and progressively enhanced deck */
+/* 7. Profiles page and progressively enhanced deck */
 
 .profiles-page {
   background: #f6f0e9;
@@ -1047,7 +1211,7 @@ h2 {
   font-size: 0.72rem;
 }
 
-/* 6. Larger screens, printing, and accessibility preferences */
+/* 8. Larger screens, printing, and accessibility preferences */
 
 @media (min-width: 46rem) {
   .site-header__inner,
@@ -1068,6 +1232,11 @@ h2 {
 
   .landing-copy h1 span {
     display: inline;
+  }
+
+  .guide-layout {
+    grid-template-columns: minmax(13rem, 0.7fr) minmax(0, 1.3fr);
+    gap: clamp(3rem, 8vw, 7rem);
   }
 
   .card-maker__inner {
