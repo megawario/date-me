@@ -2,9 +2,10 @@
 
 Date-a-Mario is a playful, framework-free static website intended to be opened from a link on a physical card. It is a personal joke, not a dating app or matchmaking product.
 
-The experience has three pages:
+The experience has four pages:
 
 - `index.html` — a scrollable landing page with the introduction and “See profiles” link.
+- `create-your-own.html` — a beginner-friendly guide to forking, customizing, publishing, and printing a personal version.
 - `profiles.html` — a mobile-first deck of Mario Gonzalez, Filme Mario, and Fun Mario. Each profile can contain a different number of vertically scrollable cards and can be swiped left or right at any point. During a swipe, a red “Next” or green “Yes” surface appears behind the active profile before the next one is shown.
 - `card.html` — an ISO ID-1 physical-card preview that creates its QR code locally and prints at 85.60 × 53.98 mm.
 
@@ -12,7 +13,7 @@ After every profile has been reviewed, the profiles page shows the Yes and No to
 
 ## Make your own
 
-1. Fork this repository and enable GitHub Pages for your fork.
+1. Fork this repository and follow `create-your-own.html` for a step-by-step GitHub Pages setup guide.
 2. Remove or replace every file under `assets/images/`; the included images are not covered by the MIT license.
 3. Edit `data/profiles.json` to define your profile variants, card order, copy, images, Spotify embeds, and whether profiles are shuffled.
 4. Replace the landing-page name, introduction, story, links, and preview image in `index.html`.
@@ -25,7 +26,7 @@ No build step or package installation is required. Serve the repository with any
 
 ## Project structure
 
-- Root HTML files contain the page structure and application UI.
+- Root HTML files contain the page structure and application UI; `create-your-own.html` is the full beginner setup guide.
 - `css/styles.css` contains presentation and responsive rules.
 - `data/profiles.json` contains all profile and card content in display order.
 - `data/card.json` contains the physical card copy, destination, colors, and optional artwork path.
