@@ -2,7 +2,7 @@
 
 ## Summary
 
-Date-a-Mario is a framework-free personal joke site and reusable GitHub Pages template. A visitor can print a physical card that points to the landing page, then follow the “See profiles” link, review three facets of Mario—Mario Gonzalez, Filme Mario, and Fun Mario—and reach an Instagram QR screen after making a temporary left-or-right decision on every profile.
+Date-a-Mario is a framework-free personal joke site and reusable GitHub Pages template. A visitor can print a physical card that points to the landing page, then follow the “See profiles” link, review four facets of Mario—Mario Gonzalez, Filme Mario, Fun Mario, and Animal Lover Mario—and reach an Instagram QR screen after making a temporary left-or-right decision on every profile.
 
 ## Page structure
 
@@ -28,7 +28,7 @@ Date-a-Mario is a framework-free personal joke site and reusable GitHub Pages te
 
 Profile artwork and copy are maintained in `data/profiles.js`. A profile entry contains its identity, accent color, and ordered cards. Profile cards configure identity copy and tags; text cards configure a callsign, heading, and body; image cards configure an image and alternative text; image-with-text cards combine those image fields with a callsign, heading, and body. Images may also set an optional focal position. Local GIFs use the same responsive crop rules as still images; add `reducedMotionImage` with a static local asset to replace an animated image when reduced motion is requested, and keep GIF files small for mobile visitors. Spotify cards configure an accessible title, a track, album, or artist embed URL, an optional height, and optional callsign, heading, and body copy displayed over the player without blocking its controls.
 
-The current profile facets are Gonzalez (creepy-cool), Filme (cinephile), and Fun (good times). Fun Mario uses `assets/images/fun-mario.jpg` and a configured Spotify album embed; the other image cards still use the local placeholder image until final photos are selected. The completion screen displays the current run's Yes and No totals with an outcome message, then links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
+The current profile facets are Gonzalez (creepy-cool), Filme (cinephile), Fun (good times), and Animal Lover (cat, dog, and bird energy). Fun Mario uses `assets/images/fun-mario.jpg` and a configured Spotify album embed. Animal Lover Mario uses the five `assets/images/am-0*.jpg` photos across profile, image, image-with-text, and funny text cards; the other image cards still use the local placeholder image until final photos are selected. The completion screen displays the current run's Yes and No totals with an outcome message, then links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
 
 ## Constraints
 

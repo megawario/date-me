@@ -107,6 +107,69 @@ window.dateMeProfilesConfig = {
           "body": "May also cause laughing at jokes that should not have worked."
         }
       ]
+    },
+    {
+      "id": "animal-lover",
+      "name": "Animal Lover Mario",
+      "accentColor": "#c9dca8",
+      "cards": [
+        {
+          "type": "profile",
+          "image": "assets/images/am-01.jpg",
+          "imageAlt": "Animal Lover Mario cuddling a Siamese cat on his lap",
+          "imagePosition": "50% 46%",
+          "callsign": "The animal lover",
+          "name": "Animal Lover Mario",
+          "age": "31",
+          "catchphrase": "Fluent in cat slow-blinks, dog enthusiasm, and whatever birds are plotting.",
+          "tags": ["Cat cuddles", "Dog walks", "Bird-approved"]
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/am-02.jpg",
+          "imageAlt": "Mario laughing while two black cats crowd around his face",
+          "imagePosition": "50% 42%",
+          "callsign": "Personal space",
+          "heading": "Currently accepting applications for the third-best spot on the sofa.",
+          "body": "The cats have already claimed first and second. This is non-negotiable."
+        },
+        {
+          "type": "text",
+          "callsign": "Relationship requirement",
+          "heading": "Must pass the sniff test.",
+          "body": "Mario is easy to impress. His four-legged hiring committee is considerably more thorough."
+        },
+        {
+          "type": "image",
+          "image": "assets/images/am-03.jpg",
+          "imageAlt": "Mario laughing in an armchair while a playful dog climbs over him",
+          "imagePosition": "50% 48%"
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/am-04.jpg",
+          "imageAlt": "Mario crouching beside a young dog on rocks by the water",
+          "imagePosition": "50% 54%",
+          "callsign": "Ideal first date",
+          "heading": "A scenic walk, good conversation, and someone else carrying the treats.",
+          "body": "The dog can chaperone, but will absolutely judge your choice of snacks."
+        },
+        {
+          "type": "text",
+          "callsign": "Frequently asked question",
+          "heading": "Is the hair naturally like that?",
+          "body": "Yes. It is maintained by a strict routine of sea air, animal chaos, and giving up."
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/am-05.jpg",
+          "imageAlt": "Mario looking at the camera with a small orange bird perched on his head",
+          "imagePosition": "50% 36%",
+          "callsign": "Character reference",
+          "heading": "The bird has reviewed this profile.",
+          "body": "No corrections. Several concerns. One enthusiastic endorsement."
+        }
+      ]
     }
   ]
 };

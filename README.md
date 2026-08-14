@@ -6,7 +6,7 @@ The experience has four pages:
 
 - `index.html` — a scrollable landing page with the introduction and “See profiles” link.
 - `create-your-own.html` — a beginner-friendly guide to forking, customizing, publishing, and printing a personal version.
-- `profiles.html` — a mobile-first deck of Mario Gonzalez, Filme Mario, and Fun Mario. Each profile can contain a different number of vertically scrollable cards and can be swiped left or right at any point. During a swipe, a red “Next” or green “Yes” surface appears behind the active profile before the next one is shown.
+- `profiles.html` — a mobile-first deck of Mario Gonzalez, Filme Mario, Fun Mario, and Animal Lover Mario. Each profile can contain a different number of vertically scrollable cards and can be swiped left or right at any point. During a swipe, a red “Next” or green “Yes” surface appears behind the active profile before the next one is shown.
 - `card.html` — an ISO ID-1 physical-card preview that creates its QR code locally and prints at 85.60 × 53.98 mm.
 
 After every profile has been reviewed, the profiles page shows the Yes and No totals for the current run, adds a message based on the result, and links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
@@ -62,7 +62,7 @@ Keep GIF files reasonably small so the page remains quick to load on mobile conn
 
 Profile headers use the profile artwork directly and do not display numbered edition badges.
 
-Fun Mario uses `assets/images/fun-mario.jpg` and includes a Spotify album card configured in `data/profiles.js`; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
+Fun Mario uses `assets/images/fun-mario.jpg` and includes a Spotify album card configured in `data/profiles.js`. Animal Lover Mario uses `assets/images/am-01.jpg` through `assets/images/am-05.jpg` across profile, image, image-with-text, and funny text cards; the remaining photo slots use the local placeholder image so real photos can be added later by changing only the configuration.
 
 The project intentionally excludes dependencies, build tooling, backend services, APIs, authentication, persistence, dating functionality, and matchmaking behavior.
 
