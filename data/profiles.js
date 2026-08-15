@@ -94,6 +94,15 @@ window.dateMeProfilesConfig = {
           "caption": "Evidence of a good time."
         },
         {
+          "type": "image-text-fade",
+          "image": "assets/images/fun-mario.jpg",
+          "imageAlt": "Fun Mario enjoying a concert with the crowd",
+          "imagePosition": "50% 72%",
+          "callsign": "One more thing",
+          "heading": "Hold to reveal the concert.",
+          "body": "The text fades away when you start a swipe."
+        },
+        {
           "type": "spotify",
           "embedUrl": "https://open.spotify.com/embed/album/7o4UsmV37Sg5It2Eb7vHzu?utm_source=generator&theme=0",
           "title": "Deftones album on Spotify",
