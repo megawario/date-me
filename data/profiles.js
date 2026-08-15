@@ -33,35 +33,42 @@ window.dateMeProfilesConfig = {
     },
     {
       "id": "filme",
-      "name": "Filme Mario",
+      "name": "Movie Mario",
       "accentColor": "#d6cae4",
       "cards": [
         {
           "type": "profile",
+          "image": "assets/images/mm-01.jpg",
+          "imagePosition": "50% 72%",
           "imageAlt": "Placeholder portrait for Filme Mario",
-          "callsign": "The cinephile",
-          "name": "Filme Mario",
-          "age": "31",
+          "callsign": "A real cinephile",
+          "name": "Movie Mario",
+          "age": "40",
           "catchphrase": "Has a film recommendation for every mood and an opinion about every ending.",
-          "tags": ["Films", "Directors", "Popcorn"]
-        },
-        {
-          "type": "text",
-          "callsign": "Important film information",
-          "heading": "The director's cut is usually worth it.",
-          "body": "He will explain why, but only after asking whether you have seen the movie first."
-        },
-        {
-          "type": "image-text",
-          "image": "assets/images/profile-placeholder.svg",
-          "imageAlt": "Placeholder portrait for Filme Mario",
-          "callsign": "Photo slot",
-          "heading": "A still from a life with excellent cinematography.",
-          "body": "Choose something with a little drama."
+          "tags": ["Horror", "Arthouse", "Good Movies", "Fun to Argue"]
         },
         {
           "type": "image",
-          "image": "assets/images/profile-placeholder.svg",
+          "image": "assets/images/mm-04.jpg",
+          "imagePosition": "50% 72%",
+          "imageAlt": "Placeholder image for Filme Mario"
+        },
+        {
+          "type": "text",
+          "callsign": "Hot Take",
+          "heading": "Movies are better when they dont compromise",
+          "body": "The ones that have their own personality are the best ones"
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/mm-02.jpg",
+          "imageAlt": "Placeholder portrait for Filme Mario",
+          "callsign": "Bragging Rights",
+          "heading": "Spent a nigh at the movie theater!",
+          "body": "Got a medal for it"
+        },{
+          "type": "image",
+          "image": "assets/images/mm-03.jpg",
           "imageAlt": "Placeholder image for Filme Mario"
         }
       ]
