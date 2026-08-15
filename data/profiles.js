@@ -25,9 +25,7 @@ window.dateMeProfilesConfig = {
           "type": "image-text",
           "image": "assets/images/profile-placeholder.svg",
           "imageAlt": "Placeholder portrait for Mario Gonzalez",
-          "callsign": "Photo slot",
-          "heading": "Insert suspiciously good photo here.",
-          "body": "Preferably with dramatic lighting."
+          "caption": "Insert suspiciously good photo here. Preferably with dramatic lighting."
         }
       ]
     },
@@ -63,10 +61,9 @@ window.dateMeProfilesConfig = {
           "type": "image-text",
           "image": "assets/images/mm-02.jpg",
           "imageAlt": "Placeholder portrait for Filme Mario",
-          "callsign": "Bragging Rights",
-          "heading": "Spent a nigh at the movie theater!",
-          "body": "Got a medal for it"
-        },{
+          "caption": "Spent a night at the movie theater. Got a medal for it."
+        },
+        {
           "type": "image",
           "image": "assets/images/mm-03.jpg",
           "imageAlt": "Placeholder image for Filme Mario"
@@ -94,9 +91,7 @@ window.dateMeProfilesConfig = {
           "image": "assets/images/fun-mario.jpg",
           "imageAlt": "Fun Mario enjoying a concert with the crowd",
           "imagePosition": "50% 72%",
-          "callsign": "Photo slot",
-          "heading": "Evidence of a good time.",
-          "body": "Use a photo where the fun is obvious before the caption explains it."
+          "caption": "Evidence of a good time."
         },
         {
           "type": "spotify",
@@ -136,9 +131,7 @@ window.dateMeProfilesConfig = {
           "image": "assets/images/am-02.jpg",
           "imageAlt": "Mario laughing while two black cats crowd around his face",
           "imagePosition": "50% 42%",
-          "callsign": "Personal space",
-          "heading": "Currently accepting applications for the third-best spot on the sofa.",
-          "body": "The cats have already claimed first and second. This is non-negotiable."
+          "caption": "The cats have already claimed first and second."
         },
         {
           "type": "text",
@@ -157,9 +150,7 @@ window.dateMeProfilesConfig = {
           "image": "assets/images/am-04.jpg",
           "imageAlt": "Mario crouching beside a young dog on rocks by the water",
           "imagePosition": "50% 54%",
-          "callsign": "Ideal first date",
-          "heading": "A scenic walk, good conversation, and someone else carrying the treats.",
-          "body": "The dog can chaperone, but will absolutely judge your choice of snacks."
+          "caption": "A scenic walk, good conversation, and someone else carrying the treats."
         },
         {
           "type": "text",
@@ -172,9 +163,7 @@ window.dateMeProfilesConfig = {
           "image": "assets/images/am-05.jpg",
           "imageAlt": "Mario looking at the camera with a small orange bird perched on his head",
           "imagePosition": "50% 36%",
-          "callsign": "Character reference",
-          "heading": "The bird has reviewed this profile.",
-          "body": "No corrections. Several concerns. One enthusiastic endorsement."
+          "caption": "The bird has reviewed this profile. One enthusiastic endorsement."
         }
       ]
     }

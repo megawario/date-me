@@ -118,20 +118,37 @@ function renderTextCard(card, headingId, isFinalCard) {
   return section;
 }
 
-function renderImageTextCard(card, headingId, isFinalCard) {
+function renderImageTextCard(card, isFinalCard) {
   const section = document.createElement('section');
   section.className = 'profile-card profile-card--image-text';
   section.dataset.cardType = 'image-text';
+  section.setAttribute('aria-label', `Image with caption: ${card.caption}`);
+  section.append(createImage(card));
+
+  const caption = createTextElement('p', 'profile-card__image-caption', card.caption);
+  section.append(caption, createCardPrompt(isFinalCard));
+
+  return section;
+}
+
+function renderImageTextFadeCard(card, headingId, isFinalCard) {
+  const section = document.createElement('section');
+  section.className = 'profile-card profile-card--image-text-fade';
+  section.dataset.cardType = 'image-text-fade';
   section.setAttribute('aria-labelledby', headingId);
   section.append(createImage(card));
 
   const copy = document.createElement('div');
-  copy.className = 'profile-card__image-copy';
-  copy.append(createTextElement('p', 'profile-card__type', card.callsign));
+  copy.className = 'image-text-fade__copy';
+
+  const content = document.createElement('div');
+  content.className = 'text-card__content';
+  content.append(createTextElement('p', 'profile-card__type', card.callsign));
 
   const heading = createTextElement('h2', '', card.heading);
   heading.id = headingId;
-  copy.append(heading, createTextElement('p', '', card.body));
+  content.append(heading, createTextElement('p', '', card.body));
+  copy.append(content);
   section.append(copy, createCardPrompt(isFinalCard));
 
   return section;
@@ -198,7 +215,8 @@ function renderCard(card, profile, cardIndex) {
 
   if (card.type === 'profile') return renderProfileCard(card, isFinalCard);
   if (card.type === 'text') return renderTextCard(card, headingId, isFinalCard);
-  if (card.type === 'image-text') return renderImageTextCard(card, headingId, isFinalCard);
+  if (card.type === 'image-text') return renderImageTextCard(card, isFinalCard);
+  if (card.type === 'image-text-fade') return renderImageTextFadeCard(card, headingId, isFinalCard);
   if (card.type === 'image') return renderImageCard(card, profile.name, isFinalCard);
   if (card.type === 'spotify') return renderSpotifyCard(card, headingId, isFinalCard);
   throw new Error(`Unsupported card type: ${card.type}`);

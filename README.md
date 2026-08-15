@@ -41,11 +41,14 @@ Supported card types and fields are:
 
 - `profile` — `image` (optional), `reducedMotionImage` (optional), `imageAlt`, `imagePosition` (optional), `callsign`, `name`, `age`, `catchphrase`, and `tags`.
 - `text` — `callsign`, `heading`, and `body`.
-- `image-text` — `image`, `reducedMotionImage` (optional), `imageAlt`, `imagePosition` (optional), `callsign`, `heading`, and `body`.
+- `image-text` — `image`, `reducedMotionImage` (optional), `imageAlt`, `imagePosition` (optional), and one short `caption`. The caption is kept small at the bottom of the card so the photo remains the focus; it is separate from the unchanged “Scroll for more ↓” cue.
+- `image-text-fade` — `image`, `reducedMotionImage` (optional), `imageAlt`, `imagePosition` (optional), `callsign`, `heading`, and `body`. It reads like a text card until the profile is held for a swipe, when the text surface fades to reveal the image.
 - `image` — `image`, `reducedMotionImage` (optional), `imageAlt`, and `imagePosition` (optional).
 - `spotify` — `embedUrl`, accessible iframe `title`, `callsign` (optional), `heading` (optional), `body` (optional), and `height` (optional, clamped between 300 and 480 pixels). The URL must be an `https://open.spotify.com/embed/` track, album, or artist URL. Configured copy appears over the player without blocking its controls.
 
 Image paths are relative to the site root. A profile card without an `image` uses the decorative monogram treatment. The renderer adds the visible “Scroll for more ↓” cue to every non-final card and “Left or right?” to the last card in each profile.
+
+The shared “Scroll for more ↓” and “Left or right?” footer cue is part of every card type and must not be changed by image captions, image-text-fade cards, or other card-specific content.
 
 The existing `image` field accepts local GIF files as well as still images; GIFs play normally on profile, image, and image-with-text cards. For an animated GIF, set `reducedMotionImage` to a local static image so visitors who prefer reduced motion receive that image instead:
 
