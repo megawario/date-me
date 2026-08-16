@@ -2,30 +2,146 @@ window.dateMeProfilesConfig = {
   "shuffleProfiles": true,
   "profiles": [
     {
-      "id": "gonzalez",
-      "name": "Mario Gonzalez",
+      "id": "silly",
+      "name": "Silly Mario",
       "accentColor": "#b9d1c6",
       "cards": [
         {
           "type": "profile",
-          "imageAlt": "Placeholder portrait for Mario Gonzalez",
-          "callsign": "The creepy-cool one",
-          "name": "Mario Gonzalez",
-          "age": "31",
-          "catchphrase": "Looks like he knows a secret, but will probably tell you if you ask nicely.",
-          "tags": ["Dark humor", "Late nights", "Strange charm"]
-        },
-        {
-          "type": "text",
-          "callsign": "The overall vibe",
-          "heading": "A little unsettling. Surprisingly charming.",
-          "body": "He may appear in your dreams, but at least he brings good conversation."
+          "imageAlt": "Placeholder portrait for Silly Mario",
+          "callsign": "Loveable Weirdo",
+          "image": "assets/images/sm02.jpg",
+          "name": "Silly Mario",
+          "age": "40",
+          "catchphrase": "Hopefully the Hobbes to your Calvin",
+          "tags": ["Silly", "Weird", "Strangely charming"]
         },
         {
           "type": "image-text",
-          "image": "assets/images/profile-placeholder.svg",
-          "imageAlt": "Placeholder portrait for Mario Gonzalez",
-          "caption": "Insert suspiciously good photo here. Preferably with dramatic lighting."
+          "image": "assets/images/sm05.jpg",
+          "caption": "i feel cute, might delete later"
+        },
+        {
+          "type": "text",
+          "callsign": "Lets be weird",
+          "heading": "The horror persists, but i stay silly",
+          "body": "Jokes can sometimes be too silly though"
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/sm04.jpg",
+          "caption": "Look how happy the icecream looks!!!"
+        },
+        {
+          "type": "image-text-fade",
+          "image": "assets/images/sm03.jpg",
+          "callsign": "Calvin:",
+          "heading": "It’s a magical world, Hobbes, ol’ buddy…Let’s go exploring!",
+          "body": "Let's Go?"
+        }
+      ]
+    },
+    {
+      "id": "photographer",
+      "name": "Mario Photo",
+      "accentColor": "#b9d1c6",
+      "cards": [
+        {
+          "type": "profile",
+          "callsign": "The best photo taker",
+          "image": "assets/images/fm01.jpg",
+          "name": "Photo Mario",
+          "age": "40",
+          "catchphrase": "This is just to annoy my friend",
+          "tags": ["Photography", "Best Photographer", "Great Photos"]
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/fm02.jpg",
+          "caption": "Love this selfie, i mean self portrait "
+        },
+        {
+          "type": "text",
+          "callsign": "I learned...",
+          "heading": "That its actually fun to take photos",
+          "body": "Great activity to do with friends :D"
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/fm05.jpg",
+          "caption": "You can still be present and engaged, it can make you think on the scene"
+        },
+        {
+          "type": "text",
+          "callsign": "Born to do this",
+          "heading": "I feel like I have a marketing or designer degree",
+          "body": "Will totally take an amazing photo of you."
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/fm03.jpg",
+          "caption": "Could be you, photographed like this!"
+        },
+        {
+          "type": "image-text-fade",
+          "image": "assets/images/fm04.jpg",
+          "callsign": "Hey you! Reading this!",
+          "heading": "I took this photo thinking of you",
+          "body": "Its a bad photo, but the emotion is all there"
+        }
+      ]
+    },
+    {
+      "id": "Metal",
+      "name": "Metal Mario",
+      "accentColor": "#efc4ae",
+      "cards": [
+        {
+          "type": "profile",
+          "image": "assets/images/mfm01.jpg",
+          "imagePosition": "50% 72%",
+          "callsign": "The fun one",
+          "name": "Festival Mario",
+          "age": "40",
+          "catchphrase": "Will want to go to the pit, don't let him!",
+          "tags": ["Headbanger", "Just Go", "Great Stories","Brufen"]
+        },
+        {
+          "type": "spotify",
+          "embedUrl": "https://open.spotify.com/embed/track/0Aq5S8Did22z1YrpO7MJIG?utm_source=generator&theme=0",
+          "callsign": "Now Playing",
+          "heading": "Wholesome song - very camus",
+          "body": "Press play and keep scrolling when the mood is set.",
+          "height": 380
+        },
+        {
+          "type": "text",
+          "callsign": "Surprises are the best",
+          "heading": "I dont even knew what i went to see",
+          "body": "I just go, whatever happens happens"
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/mfm03.jpg",
+          "caption": "Ni-Hao - friends, someplace new, some weird band, it was great"
+        },
+        {
+          "type": "text",
+          "callsign": "My questionable judgement",
+          "heading": "Made me not fill this with a bunch of photos with bands",
+          "body": "Yes i need to tell them how amazing they were"
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/mfm02.jpg",
+          "caption": "Me and the legendary Fernando Ribeiro"
+        },
+        {
+          "type": "image-text-fade",
+          "image": "assets/images/mfm04.jpg",
+          "callsign": "Take hold of my hand for you are no longer alone",
+          "heading": "Walk with me in hell",
+          "body": "Lets Just GO Whenever, Wherever!!!"
         }
       ]
     },
@@ -37,85 +153,38 @@ window.dateMeProfilesConfig = {
         {
           "type": "profile",
           "image": "assets/images/mm-01.jpg",
-          "imagePosition": "50% 72%",
           "imageAlt": "Placeholder portrait for Filme Mario",
           "callsign": "A real cinephile",
           "name": "Movie Mario",
           "age": "40",
           "catchphrase": "Has a film recommendation for every mood and an opinion about every ending.",
-          "tags": ["Horror", "Arthouse", "Good Movies", "Fun to Argue"]
-        },
-        {
-          "type": "image",
-          "image": "assets/images/mm-04.jpg",
-          "imagePosition": "50% 72%",
-          "imageAlt": "Placeholder image for Filme Mario"
-        },
-        {
-          "type": "text",
-          "callsign": "Hot Take",
-          "heading": "Movies are better when they dont compromise",
-          "body": "The ones that have their own personality are the best ones"
+          "tags": ["Will See Anything", "Good Movies", "Fun to Argue"]
         },
         {
           "type": "image-text",
           "image": "assets/images/mm-02.jpg",
-          "imageAlt": "Placeholder portrait for Filme Mario",
-          "caption": "Spent a night at the movie theater. Got a medal for it."
-        },
-        {
-          "type": "image",
-          "image": "assets/images/mm-03.jpg",
-          "imageAlt": "Placeholder image for Filme Mario"
-        }
-      ]
-    },
-    {
-      "id": "fun",
-      "name": "Fun Mario",
-      "accentColor": "#efc4ae",
-      "cards": [
-        {
-          "type": "profile",
-          "image": "assets/images/fun-mario.jpg",
-          "imageAlt": "Fun Mario enjoying a concert with the crowd",
-          "imagePosition": "50% 72%",
-          "callsign": "The fun one",
-          "name": "Fun Mario",
-          "age": "31",
-          "catchphrase": "Can turn a normal evening into a story you will still be retelling next week.",
-          "tags": ["Good times", "Bad ideas", "Great stories"]
-        },
-        {
-          "type": "image-text",
-          "image": "assets/images/fun-mario.jpg",
-          "imageAlt": "Fun Mario enjoying a concert with the crowd",
-          "imagePosition": "50% 72%",
-          "caption": "Evidence of a good time."
-        },
-        {
-          "type": "image-text-fade",
-          "image": "assets/images/fun-mario.jpg",
-          "imageAlt": "Fun Mario enjoying a concert with the crowd",
-          "imagePosition": "50% 72%",
-          "callsign": "One more thing",
-          "heading": "Hold to reveal the concert.",
-          "body": "The text fades away when you start a swipe."
-        },
-        {
-          "type": "spotify",
-          "embedUrl": "https://open.spotify.com/embed/album/7o4UsmV37Sg5It2Eb7vHzu?utm_source=generator&theme=0",
-          "title": "Deftones album on Spotify",
-          "callsign": "Now playing",
-          "heading": "A soundtrack for the good times.",
-          "body": "Press play and keep scrolling when the mood is set.",
-          "height": 380
+          "caption": "Spent a full night at the movie theater, awake. Got a medal for it."
         },
         {
           "type": "text",
-          "callsign": "Terms and conditions",
-          "heading": "Side effects may include spontaneous plans.",
-          "body": "May also cause laughing at jokes that should not have worked."
+          "callsign": "Hot Take",
+          "heading": "Like people, movies are better when they dont compromise",
+          "body": "The ones that let shine their own personality are the best ones"
+        },
+        {
+          "type": "spotify",
+          "embedUrl": "https://open.spotify.com/embed/track/2KhEVY9OrCbk1SqmYpVWhH?utm_source=generator&theme=0",
+          "callsign": "Guilty Pleasure",
+          "heading": "Love me some bad movies",
+          "body": "special place in my heart",
+          "height": 380
+        },
+        {
+          "type": "image-text-fade",
+          "image": "assets/images/mm03.jpg",
+          "callsign": "Test of Endurance",
+          "heading": "Saw 20+ movies, in Fantasporto",
+          "body": "I like to take selfies with the directors"
         }
       ]
     },
@@ -126,55 +195,84 @@ window.dateMeProfilesConfig = {
       "cards": [
         {
           "type": "profile",
-          "image": "assets/images/am-01.jpg",
+          "image": "assets/images/am02.jpg",
           "imageAlt": "Animal Lover Mario cuddling a Siamese cat on his lap",
-          "imagePosition": "50% 46%",
           "callsign": "The animal lover",
-          "name": "Animal Lover Mario",
-          "age": "31",
-          "catchphrase": "Fluent in cat slow-blinks, dog enthusiasm, and whatever birds are plotting.",
-          "tags": ["Cat cuddles", "Dog walks", "Bird-approved"]
+          "name": "Animal Mario",
+          "age": "40",
+          "catchphrase": "Cats, Birds, Dogs, Reptiles, all animals welcome",
+          "tags": ["Cat teasing", "Dog running", "Bird-approved"]
         },
         {
           "type": "image-text",
-          "image": "assets/images/am-02.jpg",
-          "imageAlt": "Mario laughing while two black cats crowd around his face",
-          "imagePosition": "50% 42%",
-          "caption": "The cats have already claimed first and second."
+          "image": "assets/images/am03.jpg",
+          "caption": "Terrorist - bye bye foot",
         },
         {
           "type": "text",
-          "callsign": "Relationship requirement",
-          "heading": "Must pass the sniff test.",
-          "body": "Mario is easy to impress. His four-legged hiring committee is considerably more thorough."
-        },
-        {
-          "type": "image",
-          "image": "assets/images/am-03.jpg",
-          "imageAlt": "Mario laughing in an armchair while a playful dog climbs over him",
-          "imagePosition": "50% 48%"
+          "callsign": "Once uppon a time",
+          "heading": "I had 4 cats at the same time",
+          "body": "And i loved every single one of them"
         },
         {
           "type": "image-text",
-          "image": "assets/images/am-04.jpg",
-          "imageAlt": "Mario crouching beside a young dog on rocks by the water",
-          "imagePosition": "50% 54%",
-          "caption": "A scenic walk, good conversation, and someone else carrying the treats."
+          "image": "assets/images/am01.jpg",
+          "caption": "So warm during winter"
         },
         {
-          "type": "text",
-          "callsign": "Frequently asked question",
-          "heading": "Is the hair naturally like that?",
-          "body": "Yes. It is maintained by a strict routine of sea air, animal chaos, and giving up."
-        },
-        {
-          "type": "image-text",
-          "image": "assets/images/am-05.jpg",
-          "imageAlt": "Mario looking at the camera with a small orange bird perched on his head",
-          "imagePosition": "50% 36%",
-          "caption": "The bird has reviewed this profile. One enthusiastic endorsement."
+          "type": "image-text-fade",
+          "image": "assets/images/am05.jpg",
+          "callsign": "Come on",
+          "heading": "You know i must be kind of nice",
+          "body": "Birds kinda know this"
         }
       ]
-    }
+    },
+    {
+      "id": "gonzalez",
+      "name": "Mario Gonzalez",
+      "accentColor": "#b9d1c6",
+      "cards": [
+        {
+          "type": "profile",
+          "imageAlt": "Placeholder portrait for Mario Gonzalez",
+          "image": "assets/images/ssm03.jpg",
+          "callsign": "The creepy one",
+          "name": "Mario Gonzalez",
+          "age": "40",
+          "catchphrase": "Hola, como vas?",
+          "tags": ["Habla Espanhol", "Mui Guapo", "Algo que suceda", "Cringe"]
+        },
+        {
+          "type": "text",
+          "callsign": "Hola, hermosa",
+          "heading": "Tus ojos son como estrellas en el cielo",
+          "body": "Me gusta la gasolina y me gustas tú"
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/ssm01.jpg",
+          "caption": "¡Hola, guapa! ¿Cómo estás? ¿Quieres bailar?"
+        },
+        {
+          "type": "text",
+          "callsign": "¿Sé bailar?",
+          "heading": "Bachata, salsa y forró",
+          "body": "Preciosa, bailaremos hasta la madrugada, dejando que nuestros cuerpos hablen."
+        },
+        {
+          "type": "image-text",
+          "image": "assets/images/ssm04.jpg",
+          "caption": "¡Hola, guapa! ¿Cómo estás? ¿Quieres bailar?"
+        },
+        {
+          "type": "image-text-fade",
+          "image": "assets/images/ssm02.jpg",
+          "callsign": "Bombón",
+          "heading": "Me pierdo en mis pensamientos cuando pienso en ti.",
+          "body": "Como si me dejara llevar por el océano de todo lo que eres."
+        }
+      ]
+    },
   ]
 };

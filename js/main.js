@@ -149,7 +149,9 @@ function renderImageTextFadeCard(card, headingId, isFinalCard) {
   heading.id = headingId;
   content.append(heading, createTextElement('p', '', card.body));
   copy.append(content);
-  section.append(copy, createCardPrompt(isFinalCard));
+
+  const holdPrompt = createTextElement('p', 'image-text-fade__hold', '◉ Hold to reveal');
+  section.append(copy, holdPrompt, createCardPrompt(isFinalCard));
 
   return section;
 }
@@ -205,7 +207,7 @@ function renderSpotifyCard(card, headingId, isFinalCard) {
   copy.append(heading);
   if (card.body) copy.append(createTextElement('p', '', card.body));
 
-  section.append(player, copy, createCardPrompt(isFinalCard));
+  section.append(copy, player, createCardPrompt(isFinalCard));
   return section;
 }
 

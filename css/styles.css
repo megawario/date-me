@@ -990,7 +990,31 @@ h2 {
   color: var(--color-muted);
 }
 
-.js .profile-sequence.is-dragging .profile-card--image-text-fade .image-text-fade__copy {
+.image-text-fade__hold {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  width: max-content;
+  max-width: calc(100% - 2rem);
+  margin: 0;
+  border: 1px solid rgb(37 34 31 / 12%);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  background: rgb(255 253 249 / 90%);
+  box-shadow: 0 0.15rem 0.5rem rgb(37 34 31 / 10%);
+  color: var(--color-accent-dark);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  text-align: center;
+  text-transform: uppercase;
+  transition: opacity 220ms ease;
+}
+
+.js .profile-sequence.is-dragging .profile-card--image-text-fade .image-text-fade__copy,
+.js .profile-sequence.is-dragging .profile-card--image-text-fade .image-text-fade__hold {
   opacity: 0;
 }
 
@@ -1021,6 +1045,7 @@ h2 {
   display: grid;
   min-height: 30rem;
   padding: 1rem 1rem 4rem;
+  row-gap: 0.75rem;
   place-items: center;
   background: #121212;
 }
@@ -1039,11 +1064,7 @@ h2 {
 }
 
 .spotify-card__copy {
-  position: absolute;
-  top: 1.75rem;
-  right: 1.75rem;
-  left: 1.75rem;
-  z-index: 1;
+  width: min(100%, 21.25rem);
   padding: 1rem;
   border-radius: 0.75rem;
   background: linear-gradient(135deg, rgb(0 0 0 / 88%), rgb(0 0 0 / 58%));
