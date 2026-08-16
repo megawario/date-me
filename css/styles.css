@@ -1320,6 +1320,10 @@ h2 {
   text-align: center;
 }
 
+.profile-complete:focus {
+  outline: none;
+}
+
 .profile-complete h2 {
   max-width: 27rem;
   margin: 0 auto 1rem;
