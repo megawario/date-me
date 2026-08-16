@@ -35,7 +35,7 @@ function createTextElement(tagName, className, text) {
 function createImage(card) {
   const image = document.createElement('img');
   const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  image.src = prefersReducedMotion && card.reducedMotionImage
+  image.dataset.src = prefersReducedMotion && card.reducedMotionImage
     ? card.reducedMotionImage
     : card.image;
   image.alt = card.imageAlt;
@@ -183,7 +183,7 @@ function renderSpotifyCard(card, headingId, isFinalCard) {
   player.className = 'spotify-card__player';
 
   const iframe = document.createElement('iframe');
-  iframe.src = embedUrl.toString();
+  iframe.dataset.src = embedUrl.toString();
   iframe.title = card.title;
   iframe.loading = 'lazy';
   iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
@@ -284,6 +284,20 @@ function initializeDeck() {
     return profiles[activeIndex];
   }
 
+  function loadDeferredMedia(profile, firstCardOnly = false) {
+    if (!profile) return;
+
+    const scope = firstCardOnly
+      ? profile.querySelector('.profile-card')
+      : profile;
+    if (!scope) return;
+
+    scope.querySelectorAll('[data-src]').forEach((media) => {
+      media.src = media.dataset.src;
+      delete media.dataset.src;
+    });
+  }
+
   function clearDecisionLayer() {
     if (!decisionLayer) return;
     decisionLayer.classList.remove('is-like', 'is-nope');
@@ -301,6 +315,9 @@ function initializeDeck() {
   }
 
   function updateStack() {
+    loadDeferredMedia(currentProfile());
+    loadDeferredMedia(profiles[activeIndex + 1], true);
+
     profiles.forEach((profile, index) => {
       const isCurrent = index === activeIndex;
       profile.setAttribute('aria-hidden', String(!isCurrent));
