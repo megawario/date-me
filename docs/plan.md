@@ -8,7 +8,7 @@ Date-a-Mario is a framework-free personal joke site and reusable GitHub Pages te
 
 - `index.html` is the root landing page and keeps the GitHub Pages entry point unchanged. Its final section explains the real-world motivation and links to the source, setup guide, and printable physical card.
 - `create-your-own.html` is a root-level, beginner-friendly setup guide. It explains forking, replacing protected images, customizing content and profile cards, configuring and printing the physical card, previewing, enabling GitHub Pages, publishing later changes, and common problems; it ends with reference links.
-- `card.html` previews and prints one horizontal ISO ID-1 physical card at 85.60 × 53.98 mm, and previews a separate 4:5 portrait card for social sharing; the landing page links to it.
+- `card.html` previews and prints one horizontal ISO ID-1 physical card at 85.60 × 53.98 mm, and displays a fixed 1080 × 1350 image for social sharing; the landing page links to it.
 - `profiles.html` contains the focused profile deck and completion screen.
 - Each profile owns a variable-length sequence configured in `data/profiles.js`. The root-level `shuffleProfiles` option randomizes profile order on each page load without changing card order within a profile. Sequences can contain profile, text, image, image-with-text, image-with-text-fade, and Spotify cards in any order. Image fields accept local still images or GIFs; animated cards can provide a static `reducedMotionImage` fallback for visitors who prefer reduced motion.
 - JavaScript reads the configuration loaded by the page, renders semantic card markup, and turns the profile list into a one-profile-at-a-time deck while CSS makes each profile's cards vertically scrollable.
@@ -20,9 +20,9 @@ Date-a-Mario is a framework-free personal joke site and reusable GitHub Pages te
 - `js/main.js` activates the deck only when `[data-profile-deck]` is present. It renders the profile configuration, then adds pointer dragging, behind-card decision feedback, keyboard controls, progress, completion, and a clean page reload when starting again.
 - Swipe decisions are counted as Yes or No only in memory for the current run, displayed on completion, and discarded when the flow restarts or is left. Nothing is persisted or transmitted.
 - Internal pages and assets use relative paths so the site works from the repository root on GitHub Pages.
-- `data/card.js` configures both card versions' brand, headline, prompt, destination and displayed URLs, QR label, theme colors, and optional local artwork. `js/card.js` applies that configuration with text-safe DOM APIs and creates a byte-mode QR code as SVG entirely in the browser.
+- `data/card.js` configures the printable card's brand, headline, prompt, destination and displayed URLs, QR label, theme colors, and optional local artwork. `js/card.js` applies that configuration with text-safe DOM APIs and creates a byte-mode QR code as SVG entirely in the browser.
 - The QR keeps a fixed white quiet zone, sits apart from configurable copy and artwork, and has a printed URL fallback. Print styles hide page chrome and output only the exact-size card.
-- The vertical 4:5 card is shown directly on `card.html` for visitors to capture and share with their device.
+- The fixed vertical 4:5 image is shown directly on `card.html` for visitors to save or share with their device.
 
 ## Assets and placeholders
 

@@ -779,88 +779,13 @@ h2 {
   text-align: center;
 }
 
-.portrait-card {
-  --card-foreground: #25221f;
-  --card-background: #fbf7f1;
-  --card-accent: #b44738;
-  position: relative;
-  container-type: inline-size;
+.portrait-card-image {
+  display: block;
   width: min(100%, 24rem);
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
+  height: auto;
   border: 1px solid rgb(37 34 31 / 8%);
   border-radius: 1.5rem;
-  background: var(--card-background);
   box-shadow: var(--shadow-card);
-  color: var(--card-foreground);
-}
-
-.portrait-card__artwork {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 42%;
-}
-
-.portrait-card__body {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  display: grid;
-  height: 34%;
-  align-items: center;
-  grid-template-areas:
-    "brand qr"
-    "headline qr"
-    "prompt qr";
-  grid-template-columns: minmax(0, 1fr) 24cqw;
-  gap: 1cqw 4cqw;
-  border-radius: 4cqw 4cqw 0 0;
-  padding: 3.5cqw 5cqw;
-  background: white;
-  text-align: left;
-}
-
-.portrait-card__brand {
-  grid-area: brand;
-  margin: 0;
-  color: var(--card-accent);
-  font-size: 2.7cqw;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.portrait-card__body h2 {
-  grid-area: headline;
-  max-width: 12ch;
-  margin-bottom: 0;
-  font-size: 7.2cqw;
-  line-height: 0.9;
-}
-
-.portrait-card__prompt {
-  grid-area: prompt;
-  margin-bottom: 0;
-  font-size: 2.8cqw;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.portrait-card__qr,
-.portrait-card__qr svg {
-  display: block;
-  width: 24cqw;
-  aspect-ratio: 1;
-}
-
-.portrait-card__qr {
-  grid-area: qr;
 }
 
 /* 7. Profiles page and progressively enhanced deck */

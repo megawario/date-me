@@ -4,7 +4,6 @@
  */
 
 const card = document.querySelector('[data-physical-card]');
-const portraitCard = document.querySelector('[data-portrait-card]');
 const status = document.querySelector('[data-card-status]');
 const printButton = document.querySelector('[data-print-card]');
 
@@ -318,7 +317,6 @@ function renderCard(configuration) {
   }
 
   renderConfiguredCard(card, configuration, destination);
-  renderConfiguredCard(portraitCard, configuration, destination);
   status.textContent = 'Card ready. Print at 100% scale for an 85.60 × 53.98 mm card.';
 }
 
@@ -329,11 +327,9 @@ if (window.dateMeCardConfig) {
     renderCard(window.dateMeCardConfig);
   } catch (error) {
     card.setAttribute('aria-busy', 'false');
-    portraitCard.setAttribute('aria-busy', 'false');
     status.textContent = `Card unavailable: ${error.message}`;
   }
 } else {
   card.setAttribute('aria-busy', 'false');
-  portraitCard.setAttribute('aria-busy', 'false');
   status.textContent = 'Card unavailable: configuration could not be loaded.';
 }
