@@ -7,7 +7,7 @@ The experience has four pages:
 - `index.html` — a scrollable landing page with the introduction and “See profiles” link.
 - `create-your-own.html` — a beginner-friendly guide to forking, customizing, publishing, and printing a personal version.
 - `profiles.html` — a mobile-first deck of Mario Gonzalez, Filme Mario, Fun Mario, and Animal Lover Mario. Each profile can contain a different number of vertically scrollable cards and can be swiped left or right at any point. During a swipe, a red “Next” or green “Yes” surface appears behind the active profile before the next one is shown.
-- `card.html` — an ISO ID-1 physical-card preview that creates its QR code locally and prints at 85.60 × 53.98 mm.
+- `card.html` — a horizontal ISO ID-1 physical-card preview that creates its QR code locally and prints at 85.60 × 53.98 mm, plus a 4:5 portrait version that can be shared as a PNG.
 
 After every profile has been reviewed, the profiles page shows the Yes and No totals for the current run, adds a message based on the result, and links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
 
@@ -17,7 +17,7 @@ After every profile has been reviewed, the profiles page shows the Yes and No to
 2. Remove or replace every file under `assets/images/`; the included images are not covered by the MIT license.
 3. Edit `data/profiles.js` to define your profile variants, card order, copy, images, Spotify embeds, and whether profiles are shuffled.
 4. Replace the landing-page name, introduction, story, links, and preview image in `index.html`.
-5. Configure the printable physical card in `data/card.js`, then open `card.html` to print it or save it as a PDF.
+5. Configure the cards in `data/card.js`, then open `card.html` to print the horizontal card or share the portrait version.
 6. Open the files directly while editing or publish the updated fork through GitHub Pages.
 
 ## Local usage
@@ -29,9 +29,9 @@ No build step, package installation, or local server is required. Open `index.ht
 - Root HTML files contain the page structure and application UI; `create-your-own.html` is the full beginner setup guide.
 - `css/styles.css` contains presentation and responsive rules.
 - `data/profiles.js` contains all profile and card content in display order.
-- `data/card.js` contains the physical card copy, destination, colors, and optional artwork path.
+- `data/card.js` contains the shared horizontal and portrait card copy, destination, colors, and optional artwork path.
 - `js/main.js` renders the configured cards and runs the profile deck; Yes and No decisions are counted only for the current run and are never stored or transmitted. “Review again” discards the counts and cleanly reloads the profiles page with the page and every profile reset to its first card.
-- `js/card.js` renders the printable card and generates its QR code as local SVG without an external service.
+- `js/card.js` renders both cards, generates their QR codes locally, and creates the portrait PNG without an external service.
 - `assets/images/` contains local profile imagery.
 - `docs/plan.md` documents the current static-site scope.
 
@@ -73,10 +73,12 @@ The project intentionally excludes dependencies, build tooling, backend services
 
 1. Fork the repository and replace every protected file in `assets/images/` with artwork you own or are permitted to use.
 2. Edit `data/card.js`, in the value assigned to `window.dateMeCardConfig`. Set `destinationUrl` to the complete public URL the QR should open, and use `displayUrl` for the shorter fallback address printed below it.
-3. Customize `brand`, `headline`, `prompt`, `qrLabel`, `foregroundColor`, `backgroundColor`, and `accentColor`. Set `artwork` to a relative local image path, or to an empty string for no artwork.
+3. Customize `brand`, `headline`, `prompt`, `qrLabel`, `foregroundColor`, `backgroundColor`, and `accentColor`. Set `artwork` to a relative local image path, or to an empty string for no artwork, and describe it with `artworkAlt`.
 4. Open `card.html` directly in a browser (or serve it through GitHub Pages).
 5. Use “Print card,” select 100% or actual-size scaling, and disable browser headers and footers. Print on card stock or save the result as a PDF. To create an image, capture or convert the saved PDF at its original proportions.
 6. Cut the card to the ISO ID-1 dimensions, 85.60 × 53.98 mm. The QR includes its own white quiet zone and the displayed URL remains available if scanning fails.
+
+The portrait preview uses a 4:5 social-post ratio. On GitHub Pages or another HTTPS host, “Share on Instagram” creates a 1080 × 1350 PNG and opens the device share sheet when image sharing is supported. If it is unavailable, the same control downloads the PNG so it can be uploaded manually. Browsers block this image export and sharing flow when `card.html` is opened directly with `file://`; printing and both previews still work locally.
 
 The local QR renderer accepts HTTP and HTTPS destinations up to 271 UTF-8 bytes. Always open the generated card before printing so the configured content is visible.
 

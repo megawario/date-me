@@ -580,7 +580,7 @@ h2 {
 }
 
 .card-maker {
-  padding: clamp(2.5rem, 8vw, 5rem) var(--gutter);
+  padding-block: clamp(2.5rem, 8vw, 5rem);
 }
 
 .card-maker__inner {
@@ -610,7 +610,35 @@ h2 {
   cursor: pointer;
 }
 
-.card-preview {
+.card-maker__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.card-maker__actions .button:disabled {
+  border-color: var(--color-border);
+  background: var(--color-border);
+  color: var(--color-muted);
+  cursor: wait;
+  transform: none;
+}
+
+.card-maker__share-status {
+  min-height: 1.5em;
+  margin: 0.75rem 0 0;
+  font-size: 0.8rem;
+}
+
+.card-previews {
+  display: grid;
+  gap: clamp(2rem, 7vw, 4rem);
+  align-items: start;
+  justify-items: center;
+}
+
+.card-preview,
+.portrait-card-preview {
   min-width: 0;
 }
 
@@ -637,26 +665,33 @@ h2 {
 .physical-card::after {
   position: absolute;
   inset: 0;
-  z-index: -1;
-  background: linear-gradient(105deg, var(--card-background) 0 51%, transparent 78%);
+  z-index: 1;
+  background: linear-gradient(90deg, transparent 0 10%, var(--card-background) 48% 100%);
   content: "";
+  pointer-events: none;
 }
 
 .physical-card__artwork {
   position: absolute;
-  inset: 0 0 0 auto;
-  z-index: -2;
-  width: 60%;
+  inset: 0 auto 0 0;
+  z-index: 0;
+  width: 55%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.3;
-  filter: grayscale(1);
+  object-position: center 42%;
+  opacity: 0.42;
+  filter: grayscale(1) contrast(0.85);
 }
 
 .physical-card__copy {
+  position: relative;
+  z-index: 2;
   display: flex;
   min-width: 0;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .physical-card__brand,
@@ -669,24 +704,28 @@ h2 {
 }
 
 .physical-card__brand {
-  margin-bottom: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
   color: var(--card-accent);
 }
 
 .physical-card__copy h2 {
   margin-bottom: 2mm;
-  font-size: 21pt;
-  line-height: 0.9;
+  font-size: 18pt;
+  line-height: 0.94;
 }
 
 .physical-card__prompt {
-  max-width: 38mm;
   margin-bottom: 0;
-  font-size: 8pt;
+  font-size: 7pt;
   font-weight: 700;
 }
 
 .physical-card__scan {
+  position: relative;
+  z-index: 2;
   align-self: center;
   min-width: 0;
   padding: 1.5mm;
@@ -724,6 +763,66 @@ h2 {
   color: var(--color-muted);
   font-size: 0.8rem;
   text-align: center;
+}
+
+.portrait-card {
+  --card-foreground: #25221f;
+  --card-background: #fbf7f1;
+  --card-accent: #b44738;
+  position: relative;
+  width: min(100%, 24rem);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgb(37 34 31 / 8%);
+  border-radius: 1.5rem;
+  background: var(--card-background);
+  box-shadow: var(--shadow-card);
+  color: var(--card-foreground);
+}
+
+.portrait-card__artwork {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.portrait-card__body {
+  position: absolute;
+  right: clamp(0.75rem, 4vw, 1rem);
+  bottom: clamp(0.75rem, 4vw, 1rem);
+  left: clamp(0.75rem, 4vw, 1rem);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: clamp(0.65rem, 3vw, 0.9rem);
+  border-radius: 1rem;
+  padding: clamp(1rem, 4vw, 1.25rem);
+  background: white;
+  text-align: center;
+}
+
+.portrait-card__body h2 {
+  max-width: 12ch;
+  margin-bottom: 0;
+  font-size: clamp(1.55rem, 7vw, 2rem);
+  line-height: 0.9;
+}
+
+.portrait-card__prompt {
+  margin-bottom: 0;
+  font-size: clamp(0.65rem, 2.5vw, 0.85rem);
+  font-weight: 700;
+}
+
+.portrait-card__qr,
+.portrait-card__qr svg {
+  display: block;
+  width: clamp(6.5rem, 31vw, 8rem);
+  aspect-ratio: 1;
 }
 
 /* 7. Profiles page and progressively enhanced deck */
@@ -1294,10 +1393,6 @@ h2 {
     gap: clamp(3rem, 8vw, 7rem);
   }
 
-  .card-maker__inner {
-    grid-template-columns: minmax(18rem, 0.8fr) minmax(0, 1.2fr);
-  }
-
   .profile-preview {
     width: 19rem;
     height: 27rem;
@@ -1318,6 +1413,22 @@ h2 {
 
   .profile-card__body {
     padding: 1.55rem 1.55rem 3.8rem;
+  }
+}
+
+@media (min-width: 42rem) {
+  .card-previews {
+    grid-template-columns: 85.6mm 15rem;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 60rem) {
+  .card-previews {
+    grid-template-columns: 85.6mm 18rem;
+    gap: 2rem;
+    justify-content: center;
   }
 }
 
@@ -1343,6 +1454,7 @@ h2 {
 
   .card-maker,
   .card-maker__inner,
+  .card-previews,
   .card-preview {
     display: block;
     width: 85.6mm;

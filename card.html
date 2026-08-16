@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Create and print a physical Date-a-Mario card.">
-    <title>Print your card | Date-a-Mario</title>
+    <meta name="description" content="Print a physical Date-a-Mario card or share its portrait version.">
+    <title>Print and share your card | Date-a-Mario</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="data/card.js"></script>
     <script src="js/card.js" defer></script>
@@ -24,27 +24,44 @@
         <div class="card-maker__intro card-page__chrome">
           <p class="eyebrow">The physical bit</p>
           <h1>Print a card. Create intrigue.</h1>
-          <p>Edit <code>data/card.js</code>, then print this page at 100% scale. Only the card below appears on paper.</p>
-          <button class="button button--primary" type="button" data-print-card>Print card</button>
+          <div class="card-maker__actions">
+            <button class="button button--primary" type="button" data-print-card>Print card</button>
+            <button class="button button--secondary" type="button" data-share-instagram disabled>Share on Instagram</button>
+          </div>
+          <p class="card-maker__share-status" data-share-status role="status">Preparing the portrait card…</p>
         </div>
 
-        <section class="card-preview" aria-labelledby="card-preview-title">
-          <h2 id="card-preview-title" class="visually-hidden">Physical card preview</h2>
-          <article class="physical-card" data-physical-card aria-busy="true">
-            <img class="physical-card__artwork" data-card-artwork alt="" hidden>
-            <div class="physical-card__copy">
-              <p class="physical-card__brand" data-card-brand>Date-a-Mario</p>
-              <h2 data-card-headline>One link. Several Marios.</h2>
-              <p class="physical-card__prompt" data-card-prompt>Scan to choose responsibly.</p>
-            </div>
-            <div class="physical-card__scan">
-              <div class="physical-card__qr" data-card-qr aria-label="QR code"></div>
-              <p class="physical-card__qr-label" data-card-qr-label>Scan me</p>
-              <p class="physical-card__url" data-card-display-url>example.com/date-me</p>
-            </div>
-          </article>
-          <p class="card-preview__status card-page__chrome" data-card-status role="status">Loading card configuration…</p>
-        </section>
+        <div class="card-previews">
+          <section class="card-preview" aria-labelledby="card-preview-title">
+            <h2 id="card-preview-title" class="visually-hidden">Physical card preview</h2>
+            <article class="physical-card" data-physical-card aria-busy="true">
+              <img class="physical-card__artwork" data-card-artwork alt="" hidden>
+              <div class="physical-card__copy">
+                <p class="physical-card__brand" data-card-brand>Date-a-Mario</p>
+                <h2 data-card-headline>Let’s Keep Things Weird.</h2>
+                <p class="physical-card__prompt" data-card-prompt>Choose responsibly.</p>
+              </div>
+              <div class="physical-card__scan">
+                <div class="physical-card__qr" data-card-qr aria-label="QR code"></div>
+                <p class="physical-card__qr-label" data-card-qr-label>Scan me</p>
+                <p class="physical-card__url" data-card-display-url>example.com/date-me</p>
+              </div>
+            </article>
+            <p class="card-preview__status card-page__chrome" data-card-status role="status">Loading card configuration…</p>
+          </section>
+
+          <section class="portrait-card-preview card-page__chrome" aria-labelledby="portrait-card-title">
+            <h2 id="portrait-card-title" class="visually-hidden">Portrait card preview</h2>
+            <article class="portrait-card" data-portrait-card aria-busy="true">
+              <img class="portrait-card__artwork" data-card-artwork alt="" hidden>
+              <div class="portrait-card__body">
+                <h2 data-card-headline>Let’s Keep Things Weird.</h2>
+                <div class="portrait-card__qr" data-card-qr aria-label="QR code"></div>
+                <p class="portrait-card__prompt" data-card-prompt>Choose responsibly.</p>
+              </div>
+            </article>
+          </section>
+        </div>
       </div>
     </main>
   </body>

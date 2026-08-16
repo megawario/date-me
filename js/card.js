@@ -4,8 +4,12 @@
  */
 
 const card = document.querySelector('[data-physical-card]');
+const portraitCard = document.querySelector('[data-portrait-card]');
 const status = document.querySelector('[data-card-status]');
 const printButton = document.querySelector('[data-print-card]');
+const shareButton = document.querySelector('[data-share-instagram]');
+const shareStatus = document.querySelector('[data-share-status]');
+let portraitImageFile;
 
 const QR_BLOCKS = [
   null,
@@ -284,8 +288,198 @@ function renderQrCode(text) {
   `;
 }
 
-function setText(selector, value) {
-  card.querySelector(selector).textContent = value;
+function setText(root, selector, value) {
+  const target = root.querySelector(selector);
+  if (target) target.textContent = value;
+}
+
+function renderConfiguredCard(root, configuration, destination) {
+  setText(root, '[data-card-brand]', configuration.brand);
+  setText(root, '[data-card-headline]', configuration.headline);
+  setText(root, '[data-card-prompt]', configuration.prompt);
+  setText(root, '[data-card-qr-label]', configuration.qrLabel);
+  setText(root, '[data-card-display-url]', configuration.displayUrl);
+  root.style.setProperty('--card-foreground', configuration.foregroundColor);
+  root.style.setProperty('--card-background', configuration.backgroundColor);
+  root.style.setProperty('--card-accent', configuration.accentColor);
+
+  const artwork = root.querySelector('[data-card-artwork]');
+  if (configuration.artwork) {
+    artwork.src = configuration.artwork;
+    artwork.alt = configuration.artworkAlt || '';
+    artwork.hidden = false;
+  }
+
+  root.querySelector('[data-card-qr]').innerHTML = renderQrCode(destination.toString());
+  root.setAttribute('aria-busy', 'false');
+}
+
+function roundedRectangle(context, x, y, width, height, radius) {
+  const corner = Math.min(radius, width / 2, height / 2);
+  context.beginPath();
+  context.moveTo(x + corner, y);
+  context.lineTo(x + width - corner, y);
+  context.quadraticCurveTo(x + width, y, x + width, y + corner);
+  context.lineTo(x + width, y + height - corner);
+  context.quadraticCurveTo(x + width, y + height, x + width - corner, y + height);
+  context.lineTo(x + corner, y + height);
+  context.quadraticCurveTo(x, y + height, x, y + height - corner);
+  context.lineTo(x, y + corner);
+  context.quadraticCurveTo(x, y, x + corner, y);
+  context.closePath();
+}
+
+function drawCoverImage(context, image, x, y, width, height, radius = 34) {
+  const scale = Math.max(width / image.naturalWidth, height / image.naturalHeight);
+  const sourceWidth = width / scale;
+  const sourceHeight = height / scale;
+  const sourceX = (image.naturalWidth - sourceWidth) / 2;
+  const sourceY = (image.naturalHeight - sourceHeight) * 0.42;
+
+  context.save();
+  roundedRectangle(context, x, y, width, height, radius);
+  context.clip();
+  context.drawImage(
+    image,
+    sourceX,
+    sourceY,
+    sourceWidth,
+    sourceHeight,
+    x,
+    y,
+    width,
+    height,
+  );
+  context.restore();
+}
+
+function loadImage(source) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.decoding = 'async';
+    image.addEventListener('load', () => resolve(image), { once: true });
+    image.addEventListener('error', () => reject(new Error('The card artwork could not be loaded.')), { once: true });
+    image.src = source;
+  });
+}
+
+function drawWrappedText(context, text, x, y, maxWidth, lineHeight, maxLines = Infinity) {
+  const words = text.trim().split(/\s+/);
+  const lines = [];
+  let line = '';
+
+  words.forEach((word) => {
+    const candidate = line ? `${line} ${word}` : word;
+    if (line && context.measureText(candidate).width > maxWidth) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = candidate;
+    }
+  });
+  if (line) lines.push(line);
+
+  lines.slice(0, maxLines).forEach((lineText, index) => {
+    context.fillText(lineText, x, y + (index * lineHeight));
+  });
+
+  return y + (Math.min(lines.length, maxLines) * lineHeight);
+}
+
+function drawQrMatrix(context, text, x, y, moduleSize) {
+  const matrix = createMatrix(text);
+  const quietZone = 4;
+  const moduleCount = matrix.length + (quietZone * 2);
+  const size = moduleCount * moduleSize;
+
+  context.fillStyle = '#ffffff';
+  context.fillRect(x, y, size, size);
+  context.fillStyle = '#000000';
+  matrix.forEach((row, rowIndex) => {
+    row.forEach((dark, columnIndex) => {
+      if (!dark) return;
+      context.fillRect(
+        x + ((columnIndex + quietZone) * moduleSize),
+        y + ((rowIndex + quietZone) * moduleSize),
+        moduleSize,
+        moduleSize,
+      );
+    });
+  });
+
+  return size;
+}
+
+async function createPortraitImage(configuration, destination) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1080;
+  canvas.height = 1350;
+  const context = canvas.getContext('2d');
+
+  context.fillStyle = configuration.backgroundColor;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  if (configuration.artwork) {
+    const artwork = await loadImage(configuration.artwork);
+    drawCoverImage(context, artwork, 0, 0, canvas.width, canvas.height, 0);
+  } else {
+    context.fillStyle = configuration.accentColor;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+  }
+
+  const panelX = 64;
+  const panelY = 720;
+  const panelWidth = 952;
+  const panelHeight = 566;
+  context.fillStyle = '#ffffff';
+  roundedRectangle(context, panelX, panelY, panelWidth, panelHeight, 34);
+  context.fill();
+
+  context.textAlign = 'center';
+  context.fillStyle = configuration.foregroundColor;
+  context.font = '76px Georgia, "Times New Roman", serif';
+  context.letterSpacing = '-3px';
+  const headlineBottom = drawWrappedText(
+    context,
+    configuration.headline,
+    canvas.width / 2,
+    815,
+    760,
+    75,
+    2,
+  );
+
+  const matrix = createMatrix(destination.toString());
+  const moduleCount = matrix.length + 8;
+  const moduleSize = Math.max(1, Math.floor(230 / moduleCount));
+  const qrSize = moduleCount * moduleSize;
+  const qrX = (canvas.width - qrSize) / 2;
+  const qrY = headlineBottom + 20;
+  drawQrMatrix(context, destination.toString(), qrX, qrY, moduleSize);
+
+  context.fillStyle = configuration.foregroundColor;
+  context.font = '700 29px Inter, Arial, sans-serif';
+  context.letterSpacing = '0px';
+  context.fillText(configuration.prompt, canvas.width / 2, qrY + qrSize + 44);
+  context.textAlign = 'start';
+
+  const blob = await new Promise((resolve, reject) => {
+    canvas.toBlob((result) => {
+      if (result) resolve(result);
+      else reject(new Error('The portrait image could not be created.'));
+    }, 'image/png');
+  });
+
+  return new File([blob], 'date-a-mario-portrait.png', { type: 'image/png' });
+}
+
+function downloadPortraitImage(file) {
+  const downloadUrl = URL.createObjectURL(file);
+  const link = document.createElement('a');
+  link.href = downloadUrl;
+  link.download = file.name;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
 }
 
 function renderCard(configuration) {
@@ -294,36 +488,67 @@ function renderCard(configuration) {
     throw new Error('The destination URL must use HTTP or HTTPS.');
   }
 
-  setText('[data-card-brand]', configuration.brand);
-  setText('[data-card-headline]', configuration.headline);
-  setText('[data-card-prompt]', configuration.prompt);
-  setText('[data-card-qr-label]', configuration.qrLabel);
-  setText('[data-card-display-url]', configuration.displayUrl);
-  card.style.setProperty('--card-foreground', configuration.foregroundColor);
-  card.style.setProperty('--card-background', configuration.backgroundColor);
-  card.style.setProperty('--card-accent', configuration.accentColor);
+  renderConfiguredCard(card, configuration, destination);
+  renderConfiguredCard(portraitCard, configuration, destination);
+  status.textContent = 'Card ready. Print at 100% scale for an 85.60 × 53.98 mm card.';
 
-  const artwork = card.querySelector('[data-card-artwork]');
-  if (configuration.artwork) {
-    artwork.src = configuration.artwork;
-    artwork.hidden = false;
+  if (window.location.protocol === 'file:') {
+    shareStatus.textContent = 'Instagram sharing is available from GitHub Pages (HTTPS), not from a local file.';
+    return;
   }
 
-  card.querySelector('[data-card-qr]').innerHTML = renderQrCode(destination.toString());
-  card.setAttribute('aria-busy', 'false');
-  status.textContent = 'Card ready. Print at 100% scale for an 85.60 × 53.98 mm card.';
+  createPortraitImage(configuration, destination)
+    .then((file) => {
+      portraitImageFile = file;
+      shareButton.disabled = false;
+      shareStatus.textContent = 'Portrait card ready to share.';
+    })
+    .catch((error) => {
+      shareStatus.textContent = `Portrait card unavailable: ${error.message}`;
+    });
 }
 
 printButton?.addEventListener('click', () => window.print());
+
+shareButton?.addEventListener('click', async () => {
+  if (!portraitImageFile) return;
+
+  const shareData = {
+    files: [portraitImageFile],
+    title: 'Date-a-Mario',
+    text: window.dateMeCardConfig.headline,
+  };
+
+  if (navigator.share && navigator.canShare?.({ files: shareData.files })) {
+    try {
+      await navigator.share(shareData);
+      shareStatus.textContent = 'Portrait card shared.';
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        shareStatus.textContent = 'Sharing canceled.';
+      } else {
+        downloadPortraitImage(portraitImageFile);
+        shareStatus.textContent = 'Sharing was unavailable, so the portrait PNG was downloaded instead.';
+      }
+    }
+  } else {
+    downloadPortraitImage(portraitImageFile);
+    shareStatus.textContent = 'The portrait PNG was downloaded. Upload it to Instagram when ready.';
+  }
+});
 
 if (window.dateMeCardConfig) {
   try {
     renderCard(window.dateMeCardConfig);
   } catch (error) {
     card.setAttribute('aria-busy', 'false');
+    portraitCard.setAttribute('aria-busy', 'false');
     status.textContent = `Card unavailable: ${error.message}`;
+    shareStatus.textContent = 'Portrait card unavailable.';
   }
 } else {
   card.setAttribute('aria-busy', 'false');
+  portraitCard.setAttribute('aria-busy', 'false');
   status.textContent = 'Card unavailable: configuration could not be loaded.';
+  shareStatus.textContent = 'Portrait card unavailable: configuration could not be loaded.';
 }
