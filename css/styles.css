@@ -277,13 +277,15 @@ h2 {
 .profile-preview__card--front::before {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgb(0 0 0 / 8%) 35%, rgb(0 0 0 / 85%) 100%);
+  z-index: 1;
+  background: linear-gradient(180deg, rgb(0 0 0 / 10%) 28%, rgb(0 0 0 / 36%) 62%, rgb(0 0 0 / 94%) 100%);
   content: "";
 }
 
 .profile-preview__card--front img {
   position: absolute;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -294,6 +296,7 @@ h2 {
 .profile-preview__card small,
 .profile-preview__number {
   position: relative;
+  z-index: 2;
 }
 
 .profile-preview__card strong {
@@ -304,7 +307,7 @@ h2 {
 
 .profile-preview__card small {
   margin-top: 0.4rem;
-  color: rgb(255 255 255 / 78%);
+  color: rgb(255 255 255 / 92%);
 }
 
 .profile-preview__number {
