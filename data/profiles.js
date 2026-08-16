@@ -23,8 +23,8 @@ window.dateMeProfilesConfig = {
         },
         {
           "type": "text",
-          "callsign": "Lets be weird",
-          "heading": "The horror persists, but i stay silly",
+          "callsign": "Lets be Weird",
+          "heading": "The horror persists, but I stay silly",
           "body": "Jokes can sometimes be too silly though"
         },
         {
@@ -37,7 +37,7 @@ window.dateMeProfilesConfig = {
           "image": "assets/images/sm03.jpg",
           "callsign": "Calvin:",
           "heading": "It’s a magical world, Hobbes, ol’ buddy…Let’s go exploring!",
-          "body": "Let's Go?"
+          "body": "Shall we Go?"
         }
       ]
     },
@@ -58,7 +58,7 @@ window.dateMeProfilesConfig = {
         {
           "type": "image-text",
           "image": "assets/images/fm02.jpg",
-          "caption": "Love this selfie, i mean self portrait "
+          "caption": "Love this selfie, I mean self portrait "
         },
         {
           "type": "text",
