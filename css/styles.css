@@ -1564,8 +1564,7 @@ h2 {
   }
 
   .js .profile-deck {
-    height: min(68svh, 31rem);
-    min-height: 0;
+    height: 31rem;
   }
 
   .profile-card--spotify {
