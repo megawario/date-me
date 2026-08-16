@@ -855,6 +855,10 @@ h2 {
   margin-inline: auto;
 }
 
+.profile-context {
+  display: none;
+}
+
 .profile-deck {
   display: grid;
   gap: 2.5rem;
@@ -1419,6 +1423,100 @@ h2 {
 
   .profile-card__body {
     padding: 1.55rem 1.55rem 3.8rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .profiles-main {
+    display: grid;
+    min-height: calc(100svh - 4.5rem);
+    align-items: center;
+    padding-block: clamp(2.5rem, 6vh, 4.5rem);
+  }
+
+  .profile-experience {
+    display: grid;
+    width: min(100%, 65rem);
+    grid-template-columns: minmax(17rem, 1fr) 29rem;
+    column-gap: clamp(4.5rem, 9vw, 8rem);
+    align-items: center;
+  }
+
+  .profile-context {
+    display: block;
+    max-width: 25rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--color-accent);
+  }
+
+  .profile-context h2 {
+    margin-bottom: 1.25rem;
+    font-size: clamp(3.5rem, 5.5vw, 5.25rem);
+    line-height: 0.88;
+  }
+
+  .profile-context__intro {
+    max-width: 22rem;
+    margin-bottom: 2.25rem;
+    color: var(--color-muted);
+    font-size: 1rem;
+  }
+
+  .profile-context__steps {
+    display: grid;
+    gap: 0.8rem;
+    max-width: 22rem;
+    margin: 0;
+    padding: 1.15rem 0;
+    border-block: 1px solid var(--color-border);
+    list-style: none;
+  }
+
+  .profile-context__steps li {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.65rem;
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .profile-context__steps span {
+    color: var(--color-accent-dark);
+    font-size: 0.67rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .profile-context__count {
+    margin: 1.15rem 0 0;
+    color: var(--color-accent-dark);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .profile-deck,
+  .profile-deck__status,
+  .swipe-feedback,
+  .profile-complete,
+  .profile-experience > noscript {
+    grid-column: 2;
+  }
+
+  .profile-context {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+  }
+
+  .profile-complete {
+    min-height: 0;
+    padding-block: 1rem;
+  }
+
+  .swipe-feedback {
+    margin-bottom: -2.3rem;
   }
 }
 
