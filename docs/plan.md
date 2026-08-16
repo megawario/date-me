@@ -22,9 +22,9 @@ Date-a-Mario is a framework-free personal joke site and reusable GitHub Pages te
 - `js/main.js` activates the deck only when `[data-profile-deck]` is present. It renders the profile configuration, then adds pointer dragging, behind-card decision feedback, arrow-key decisions, keyboard card scrolling, progress, completion, and a clean page reload that resets the page and every profile to its first card when starting again.
 - Swipe decisions are counted as Yes or No only in memory for the current run, displayed on completion, and discarded when the flow restarts or is left. Nothing is persisted or transmitted.
 - Internal pages and assets use relative paths so the site works from the repository root on GitHub Pages.
-- `data/card.js` configures both card versions' brand, headline, prompt, destination and displayed URLs, QR label, theme colors, and optional local artwork. `js/card.js` applies that configuration with text-safe DOM APIs, creates a byte-mode QR code as SVG entirely in the browser, and prepares the portrait card as a PNG for the native share sheet.
+- `data/card.js` configures both card versions' brand, headline, prompt, destination and displayed URLs, QR label, theme colors, and optional local artwork. `js/card.js` applies that configuration with text-safe DOM APIs and creates a byte-mode QR code as SVG entirely in the browser.
 - The QR keeps a fixed white quiet zone, sits apart from configurable copy and artwork, and has a printed URL fallback. Print styles hide page chrome and output only the exact-size card.
-- The “Share on Instagram” control sits beside the print control. On devices that support sharing image files it opens the native share sheet with the portrait PNG; elsewhere it downloads the PNG for manual upload.
+- The vertical 4:5 card is shown directly on `card.html` for visitors to capture and share with their device.
 
 ## Assets and placeholders
 

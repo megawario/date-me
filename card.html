@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Print a physical Date-a-Mario card or share its portrait version.">
-    <title>Print and share your card | Date-a-Mario</title>
+    <meta name="description" content="Print a physical Date-a-Mario card and view its vertical share card.">
+    <title>Print and view your card | Date-a-Mario</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="data/card.js"></script>
     <script src="js/card.js" defer></script>
@@ -26,9 +26,7 @@
           <h1>Print a card. Create intrigue.</h1>
           <div class="card-maker__actions">
             <button class="button button--primary" type="button" data-print-card>Print card</button>
-            <button class="button button--secondary" type="button" data-share-instagram disabled>Share on Instagram</button>
           </div>
-          <p class="card-maker__share-status" data-share-status role="status">Preparing the portrait card…</p>
         </div>
 
         <div class="card-previews">
@@ -51,7 +49,11 @@
           </section>
 
           <section class="portrait-card-preview card-page__chrome" aria-labelledby="portrait-card-title">
-            <h2 id="portrait-card-title" class="visually-hidden">Portrait card preview</h2>
+            <div class="portrait-card-preview__intro">
+              <p class="eyebrow">The shareable version</p>
+              <h2 id="portrait-card-title">Vertical card</h2>
+              <p>Take a screenshot and share it wherever you like.</p>
+            </div>
             <article class="portrait-card" data-portrait-card aria-busy="true">
               <img class="portrait-card__artwork" data-card-artwork alt="" hidden>
               <div class="portrait-card__body">

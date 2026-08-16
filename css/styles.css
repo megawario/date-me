@@ -622,20 +622,6 @@ h2 {
   gap: 0.75rem;
 }
 
-.card-maker__actions .button:disabled {
-  border-color: var(--color-border);
-  background: var(--color-border);
-  color: var(--color-muted);
-  cursor: wait;
-  transform: none;
-}
-
-.card-maker__share-status {
-  min-height: 1.5em;
-  margin: 0.75rem 0 0;
-  font-size: 0.8rem;
-}
-
 .card-previews {
   display: grid;
   gap: clamp(2rem, 7vw, 4rem);
@@ -646,6 +632,28 @@ h2 {
 .card-preview,
 .portrait-card-preview {
   min-width: 0;
+}
+
+.portrait-card-preview {
+  display: grid;
+  width: min(100%, 24rem);
+  gap: 1rem;
+  justify-items: center;
+}
+
+.portrait-card-preview__intro {
+  text-align: center;
+}
+
+.portrait-card-preview__intro h2 {
+  margin-bottom: 0.35rem;
+  font-size: clamp(2rem, 8vw, 3rem);
+}
+
+.portrait-card-preview__intro > p:last-child {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
 }
 
 .physical-card {
