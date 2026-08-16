@@ -40,13 +40,13 @@
           <div class="guide-section__content">
             <ul class="guide-checklist">
               <li>A free <a href="https://github.com/signup">GitHub account</a> and a web browser.</li>
-              <li>Your own photos, words, and links. The example images in this project are protected, so do not publish them in your version.</li>
-              <li>A public address you want the card’s QR code to open. This will be your GitHub Pages address once the site is published.</li>
+              <li>Your own photos, words, and links. The example images in this project are protected and must be replaced or removed before you publish, redistribute, or deploy your version.</li>
+              <li>A public address you want the card’s QR code to open. GitHub provides this after the site is published.</li>
               <li>Optional: a Spotify track, album, or artist you would like to include.</li>
             </ul>
             <aside class="guide-callout" aria-label="A note about images">
               <h3>Use images you can share</h3>
-              <p>Replace every file in <code>assets/images/</code> before publishing your fork. Use photos you took, made, or have permission to use. The included image files are not part of the MIT license.</p>
+              <p>Before making a fork public, replacing every file in <code>assets/images/</code> is required. Use photos you took, made, or have permission to use. The included image files are excluded from the MIT License and may not be copied, redistributed, or deployed.</p>
             </aside>
           </div>
         </div>
@@ -70,7 +70,7 @@
               </li>
               <li>
                 <h3>Replace the sample pictures</h3>
-                <p>Open the <code>assets/images</code> folder and upload your replacements. Keep the filenames, or update every matching image path in <code>data/profiles.js</code> and <code>data/card.js</code>. You can also delete image cards you do not want.</p>
+                <p>Open the <code>assets/images</code> folder and upload your replacements. Keep the filenames, or update every matching image path in <code>data/profiles.js</code>, <code>data/card.js</code>, and <code>index.html</code>. You can also delete image cards you do not want. Remove or replace every included image before making the fork public.</p>
               </li>
               <li>
                 <h3>Make the landing page sound like you</h3>
@@ -86,7 +86,7 @@
               </li>
               <li>
                 <h3>Turn on GitHub Pages</h3>
-                <p>In your fork, open <strong>Settings</strong>, then <strong>Pages</strong>. Under “Build and deployment,” choose <strong>Deploy from a branch</strong>, select <code>main</code> and the <code>/(root)</code> folder, then save. GitHub will show the public address when the deployment is ready.</p>
+                <p>In your fork, open <strong>Settings</strong>, then <strong>Pages</strong>. Under “Build and deployment,” choose <strong>Deploy from a branch</strong>, select the branch that contains this site (usually <code>main</code>) and the <code>/(root)</code> folder, then save. GitHub will show the public address when the deployment is ready. For the current GitHub steps, use the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub Pages publishing guide</a>.</p>
               </li>
             </ol>
           </div>
@@ -141,12 +141,12 @@
           </div>
           <div class="guide-section__content">
             <h3>Preview on your computer</h3>
-            <p>The landing page can be opened by double-clicking <code>index.html</code>. To reliably preview the profiles and printable card, serve the folder with a simple local web server; browsers often block their configuration files when opened directly from your computer. If that sounds unfamiliar, publish with GitHub Pages first and use the public address as your preview.</p>
+            <p>You can preview every page by double-clicking <code>index.html</code>, <code>profiles.html</code>, or <code>card.html</code>; no local server is required. The portrait-card preview and printing both work locally.</p>
             <h3>Publish later changes</h3>
-            <p>Whenever you edit a file in GitHub and choose <strong>Commit changes</strong>, GitHub Pages automatically publishes the update. It can take a few minutes. Reload the page after a short wait, then test the profile flow and scan the card’s QR code before you print a batch.</p>
+            <p>Whenever you edit a file in GitHub and choose <strong>Commit changes</strong>, GitHub Pages publishes updates from the selected source branch. The first deployment and later updates can take a few minutes. Reload the public address after a short wait before using its address on a printed card.</p>
             <h3>Common snags</h3>
             <dl class="guide-troubleshooting">
-              <div><dt>The page is not online yet</dt><dd>Check Settings → Pages. Confirm the source is the <code>main</code> branch and <code>/(root)</code>, then allow a few minutes for the first deployment.</dd></div>
+              <div><dt>The page is not online yet</dt><dd>Check Settings → Pages. Confirm the selected source branch and <code>/(root)</code> folder contain the site, then allow a few minutes for the first deployment.</dd></div>
               <div><dt>Pictures are missing</dt><dd>Check the spelling and capitalization of the filename and path. GitHub Pages treats <code>Photo.jpg</code> and <code>photo.jpg</code> as different files.</dd></div>
               <div><dt>The profiles page says it cannot load</dt><dd>Review the most recent edit to <code>data/profiles.js</code>. Look especially for a missing comma, quotation mark, or closing bracket.</dd></div>
               <div><dt>The QR code goes to the wrong place</dt><dd>Update <code>destinationUrl</code> in <code>data/card.js</code> with the complete public URL, save it, and reopen <code>card.html</code> before printing again.</dd></div>

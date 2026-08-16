@@ -2,24 +2,22 @@
 
 ## Summary
 
-Date-a-Mario is a framework-free personal joke site and reusable GitHub Pages template. A visitor can print a physical card that points to the landing page, then follow the “See profiles” link, review four facets of Mario—Mario Gonzalez, Filme Mario, Fun Mario, and Animal Lover Mario—and reach an Instagram QR screen after making a temporary left-or-right decision on every profile.
+Date-a-Mario is a framework-free personal joke site and reusable GitHub Pages template. A visitor can print a physical card that points to the landing page, follow the “See profiles” link, review a configurable set of profile facets, and reach a contact link after making a temporary left-or-right decision on every profile.
 
 ## Page structure
 
 - `index.html` is the root landing page and keeps the GitHub Pages entry point unchanged. Its final section explains the real-world motivation and links to the source, setup guide, and printable physical card.
 - `create-your-own.html` is a root-level, beginner-friendly setup guide. It explains forking, replacing protected images, customizing content and profile cards, configuring and printing the physical card, previewing, enabling GitHub Pages, publishing later changes, and common problems; it ends with reference links.
 - `card.html` previews and prints one horizontal ISO ID-1 physical card at 85.60 × 53.98 mm, and previews a separate 4:5 portrait card for social sharing; the landing page links to it.
-- `profiles.html` contains the focused profile deck and completion screen. It intentionally has no in-page back link.
+- `profiles.html` contains the focused profile deck and completion screen.
 - Each profile owns a variable-length sequence configured in `data/profiles.js`. The root-level `shuffleProfiles` option randomizes profile order on each page load without changing card order within a profile. Sequences can contain profile, text, image, image-with-text, image-with-text-fade, and Spotify cards in any order. Image fields accept local still images or GIFs; animated cards can provide a static `reducedMotionImage` fallback for visitors who prefer reduced motion.
 - JavaScript reads the configuration loaded by the page, renders semantic card markup, and turns the profile list into a one-profile-at-a-time deck while CSS makes each profile's cards vertically scrollable.
-- Profile headers show artwork without numbered edition badges.
-- The renderer adds the visible “Scroll for more ↓” cue to every non-final card and the “Left or right?” decision prompt to every final card.
-- This shared scroll/decision footer is consistent across card types and must not be changed by card-specific content or visual treatments.
+- Profile headers show artwork without numbered edition badges. The renderer adds a visible scroll cue to every non-final card and a decision prompt to each final card.
 
 ## Presentation and behavior
 
 - `css/styles.css` uses mobile-first rules, fluid sizing, scroll snapping, visible focus states, and reduced-motion support.
-- `js/main.js` activates the deck only when `[data-profile-deck]` is present. It renders the profile configuration, then adds pointer dragging, behind-card decision feedback, arrow-key decisions, keyboard card scrolling, progress, completion, and a clean page reload that resets the page and every profile to its first card when starting again.
+- `js/main.js` activates the deck only when `[data-profile-deck]` is present. It renders the profile configuration, then adds pointer dragging, behind-card decision feedback, keyboard controls, progress, completion, and a clean page reload when starting again.
 - Swipe decisions are counted as Yes or No only in memory for the current run, displayed on completion, and discarded when the flow restarts or is left. Nothing is persisted or transmitted.
 - Internal pages and assets use relative paths so the site works from the repository root on GitHub Pages.
 - `data/card.js` configures both card versions' brand, headline, prompt, destination and displayed URLs, QR label, theme colors, and optional local artwork. `js/card.js` applies that configuration with text-safe DOM APIs and creates a byte-mode QR code as SVG entirely in the browser.
@@ -28,10 +26,8 @@ Date-a-Mario is a framework-free personal joke site and reusable GitHub Pages te
 
 ## Assets and placeholders
 
-Profile artwork and copy are maintained in `data/profiles.js`. A profile entry contains its identity, accent color, and ordered cards. Profile cards configure identity copy and tags; text cards configure a callsign, heading, and body; image cards configure an image and alternative text; image-with-text cards combine those image fields with one short bottom caption, kept small so the image remains the focus; image-with-text-fade cards use the same copy as a text card and fade it away during a swipe to reveal their image. The shared “Scroll for more ↓” or “Left or right?” cue remains separate from both treatments. Images may also set an optional focal position. Local GIFs use the same responsive crop rules as still images; add `reducedMotionImage` with a static local asset to replace an animated image when reduced motion is requested, and keep GIF files small for mobile visitors. Spotify cards configure an accessible title, a track, album, or artist embed URL, an optional height, and optional callsign, heading, and body copy displayed over the player without blocking its controls.
-
-The current profile facets are Gonzalez (creepy-cool), Filme (cinephile), Fun (good times), and Animal Lover (cat, dog, and bird energy). Fun Mario uses `assets/images/fun-mario.jpg` and a configured Spotify album embed. Animal Lover Mario uses the five `assets/images/am-0*.jpg` photos across profile, image, image-with-text, and funny text cards; the other image cards still use the local placeholder image until final photos are selected. The completion screen displays the current run's Yes and No totals with an outcome message, then links directly to `https://www.instagram.com/radioactive_space_hamster?igsh=MW5tOThuNzhhMnUzaA==`.
+Profile artwork and copy are maintained in `data/profiles.js`. Each profile contains its identity, accent color, and ordered cards; the configuration can be updated without changing the deck markup. Profile and card field reference material belongs in the user-facing [customization guide](../create-your-own.html), so this plan stays focused on architecture and scope.
 
 ## Constraints
 
-Keep the site deployable as plain static files. Configuration is provided by JavaScript files loaded before the page behavior, so every page also works when opened directly with `file://`. Do not add frameworks, packages, build tools, backend services, authentication, APIs, persistence, dating features, or matchmaking behavior. Final branding and visual direction remain open for future refinement.
+Keep the site deployable as plain static files. Configuration is provided by JavaScript files loaded before the page behavior, so every page also works when opened directly with `file://`. Portrait previews and printing work locally. Do not add frameworks, packages, build tools, backend services, authentication, APIs, persistence, dating features, or matchmaking behavior. Final branding and visual direction remain open for future refinement.
